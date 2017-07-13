@@ -6,7 +6,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.example.khlopunov.culturalchallenge"
+        applicationId "com.kpfu.itis.culturalchallenge"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -51,4 +51,6 @@ dependencies {
     provided 'org.glassfish:javax.annotation:10.0-b28'
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile project(':vksdk_library')
+    compile 'com.vk:androidsdk:1.6.5'
 }
