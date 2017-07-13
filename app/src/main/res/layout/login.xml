@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="@string/hello"
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="2.5">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <TextView
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp">
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Socrates"
+            android:gravity="right"
+            android:textColor="@color/colorText"
+            android:textStyle="italic"
+            />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/author_Socrates"
+                android:gravity="right"
+                android:textColor="@color/colorText"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/authorization"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="16sp"
+        />
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+    <EditText
+        android:layout_width="245dp"
+        android:layout_height="40dp"
+        android:hint="@string/login"
+        android:background="@drawable/edit_text_style"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="center"
+        android:textColorHint="@color/colorText"
+        android:textSize="15sp"
+        android:textStyle="italic"
+
+        />
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="245dp"
+        android:layout_height="40dp"
+        android:hint="@string/password"
+        android:textColorHint="@color/colorText"
+        android:inputType="textPassword"
+        android:background="@drawable/edit_text_style"
+        android:layout_gravity="center"
+        android:textSize="15sp"
+        android:textStyle="italic"
+
+
+        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="155dp"
+                android:layout_marginTop="15dp">
+
+                <Button
+                    android:background="@drawable/btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="@string/log_in"
+                    android:textColor="@color/colorTextWhite"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="12sp"
+                    android:alpha="0.75"/>
+
+                <Button
+                    android:background="@drawable/btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="@string/check_in"
+                    android:textColor="@color/colorTextWhite"
+                    android:textSize="12sp"
+                    android:alpha="0.75"
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
