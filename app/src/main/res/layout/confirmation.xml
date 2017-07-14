@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/task_from"
+        android:fontFamily="sans-serif-condensed"
         android:textColor="@color/colorText"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -21,6 +22,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
         android:layout_marginTop="2dp"
         android:textColor="@color/colorText"
         android:textStyle="bold"
@@ -30,6 +32,7 @@
         />
     <TextView
         android:layout_weight="1"
+        android:fontFamily="sans-serif-condensed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -40,25 +43,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <TextView
+        <TextView
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="@string/complexity"
-        android:textStyle="bold"
-        android:textColor="@color/colorText"
-        />
-    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/complexity"
+            android:textStyle="bold"
+            android:textColor="@color/colorText"
+            />
+        <TextView
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_marginTop="2dp"
-        android:textStyle="italic"
-        android:textColor="@color/colorText"
-        />
-        </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:textAlignment="center"
+            android:layout_marginTop="2dp"
+            android:textStyle="italic"
+            android:textColor="@color/colorText"
+            />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_weight="0.3"
@@ -70,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:fontFamily="sans-serif-condensed"
             android:text="@string/deadline"
             android:textStyle="italic|bold"
             android:textColor="@color/colorText"
@@ -78,6 +84,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
             android:gravity="right"
             android:layout_marginTop="2dp"
             android:textStyle="italic"
@@ -90,6 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/challenge"
+        android:fontFamily="sans-serif-condensed"
         android:textAlignment="center"
         android:textColor="@color/colorText"
         />

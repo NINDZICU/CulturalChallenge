@@ -28,28 +28,28 @@
                 android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/fact"
-                android:gravity="center"
-                android:textStyle="bold"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/fact"
+                    android:gravity="center"
+                    android:textStyle="bold"
 
-                android:textColor="@color/colorTextWhite"
-                android:layout_margin="10dp"/>
+                    android:textColor="@color/colorTextWhite"
+                    android:layout_margin="10dp"/>
 
-            <TextView
-                android:id="@+id/text_of_fact"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textStyle="bold"
+                <TextView
+                    android:id="@+id/text_of_fact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@color/colorTextWhite"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
 
-                android:textColor="@color/colorTextWhite"
-               android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-
-                android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp"/>
             </LinearLayout>
 
 
@@ -80,26 +80,28 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/task_for_today"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/colorTextWhite"
-                android:layout_margin="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/task_for_today"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorTextWhite"
+                    android:layout_margin="10dp"/>
                 <TextView
                     android:id="@+id/task_for_today"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:fontFamily="sans-serif-condensed"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:textColor="@color/colorTextWhite"
                     />
-        </LinearLayout>
+            </LinearLayout>
         </android.support.v7.widget.CardView>
 
 
