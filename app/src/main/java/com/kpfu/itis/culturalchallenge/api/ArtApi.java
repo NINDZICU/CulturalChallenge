@@ -49,6 +49,10 @@ public class ArtApi {
         return mArtApiRequests.getMyTasks(login);
     }
 
+    public Observable<List<Task>> getAllTasks(String city) {
+        return mArtApiRequests.getAllTasks(city);
+    }
+
     public Observable<String> saveUser(String login, String name, String city) {
         return mArtApiRequests.saveUser(login, name, city);
     }

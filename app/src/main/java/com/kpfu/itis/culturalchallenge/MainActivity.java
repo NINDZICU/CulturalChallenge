@@ -66,7 +66,8 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
         } else {
 
             System.out.println(access_token.accessToken);
-            final VKRequest request = VKApi.friends().getAppUsers(VKParameters.from(VKApiConst.ACCESS_TOKEN, access_token.accessToken));
+             VKRequest request = VKApi.friends().getAppUsers(VKParameters.from());
+//            VKRequest request = new VKRequest("friends.getAppUsers", null);
             request.executeWithListener(new VKRequest.VKRequestListener() {
                 @Override
                 public void onError(VKError error) {
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
                 public void onComplete(VKResponse response) {
                     super.onComplete(response);
                     VKList list = (VKList) response.parsedModel;
-                    System.out.println(Arrays.asList(list));
+                    System.out.println("FRIENDS IN APP "+Arrays.asList(list));
                 }
             });
 

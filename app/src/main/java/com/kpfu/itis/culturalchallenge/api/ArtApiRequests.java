@@ -28,5 +28,7 @@ public interface ArtApiRequests {
     @POST("user/reg")
     Observable<String> saveUser(@Query("login") String login, @Query("name") String name, @Query("city") String city);
 
+    @GET
+    Observable<List<Task>> getAllTasks(@Query("city") String city);
 
 }

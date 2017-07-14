@@ -45,4 +45,15 @@ public class ApiService {
                 },throwable ->
                         Toast.makeText(context,"Throw "+throwable.getMessage(),Toast.LENGTH_SHORT).show());
     }
+
+    public List<Task> getAllTasks(String city, TasksRecyclerAdapter adapter){
+        List<Task> mTasks = new ArrayList<>();
+        artApi.getAllTasks(city).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(tasks -> {
+                    adapter.setmTasks(tasks);
+                },throwable ->
+                        Toast.makeText(context,"Throw "+throwable.getMessage(),Toast.LENGTH_SHORT).show());
+        return mTasks;
+    }
 }
