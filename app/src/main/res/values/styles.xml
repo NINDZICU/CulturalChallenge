@@ -20,4 +20,12 @@
 
     </style>
 
+    <style name="BottomTab" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_margin">@dimen/tab_margin</item>
+        <item name="android:maxHeight">@dimen/tab_max_height</item>
+        <item name="android:padding">@dimen/tab_padding</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
 </resources>

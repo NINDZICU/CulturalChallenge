@@ -6,4 +6,7 @@
     <color name="colorText">#35324f</color>
     <color name="colorBack">#7035324f</color>
     <color name="colorTextWhite">#fff</color>
+    <color name="tab_background">#8f8f8f</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="button_pressed">#836e6e6e</color>
 </resources>

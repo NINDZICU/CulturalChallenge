@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
@@ -41,9 +43,9 @@ dependencies {
     compile project(':vksdk_library')
     compile 'com.vk:androidsdk:1.6.5'
 
-    compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.android.support:design:25.3.1'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'io.reactivex.rxjava2:rxjava:2.1.0'
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile ('com.squareup.retrofit2:converter-simplexml:2.3.0') {
@@ -52,6 +54,9 @@ dependencies {
         exclude group: 'xpp3', module: 'xpp3'
     }
     compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile project(':vksdk_library')
+    compile 'com.vk:androidsdk:1.6.5'
 }
