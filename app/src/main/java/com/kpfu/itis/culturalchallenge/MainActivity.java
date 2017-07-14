@@ -1,5 +1,6 @@
 package com.kpfu.itis.culturalchallenge;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
 import com.kpfu.itis.culturalchallenge.entities.Task;
+import com.kpfu.itis.culturalchallenge.fragments.AuthentificationActivity;
 import com.kpfu.itis.culturalchallenge.fragments.AuthentificationFragment;
 import com.kpfu.itis.culturalchallenge.providers.SharedPreferencesProvider;
 import com.kpfu.itis.culturalchallenge.service.ApiService;
@@ -58,9 +60,9 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
 
         access_token = VKAccessToken.tokenFromSharedPreferences(this, VKAccessToken.ACCESS_TOKEN);
         if (!VKSdk.isLoggedIn()) {
-            AuthentificationFragment fragment = new AuthentificationFragment();
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.task_detail_frame, fragment, AuthentificationFragment.class.getName()).commit();
+            Intent intent = new Intent(this, AuthentificationActivity.class);
+            startActivity(intent);
+
         } else {
 
             System.out.println(access_token.accessToken);
