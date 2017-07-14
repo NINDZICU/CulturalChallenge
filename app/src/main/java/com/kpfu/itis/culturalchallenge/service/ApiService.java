@@ -38,4 +38,11 @@ public class ApiService {
                         Toast.makeText(context,"Throw "+throwable.getMessage(),Toast.LENGTH_SHORT).show());
         return mTasks;
     }
+    public void saveUser(String login, String name, String city){
+        artApi.saveUser(login, name, city).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(code -> {
+                },throwable ->
+                        Toast.makeText(context,"Throw "+throwable.getMessage(),Toast.LENGTH_SHORT).show());
+    }
 }
