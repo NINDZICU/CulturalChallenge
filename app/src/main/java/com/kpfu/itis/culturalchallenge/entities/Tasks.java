@@ -1,17 +1,19 @@
 package com.kpfu.itis.culturalchallenge.entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by Anatoly on 08.07.2017.
  */
-public class Tasks {
+public class Tasks implements Serializable {
     private Integer id;
     private String name;
     private String description;
     private String dateFinish;
     private String difficulty;
     private String customer;
+
     private String address;
     private String latitude;
     private String longitude;

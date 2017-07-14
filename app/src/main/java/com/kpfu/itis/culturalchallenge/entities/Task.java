@@ -1,29 +1,43 @@
+
 package com.kpfu.itis.culturalchallenge.entities;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-/**
- * Created by Anatoly on 08.07.2017.
- */
-public class MyTasks implements Serializable{
-    private Integer id;
-    private String name;
-    private String description;
-    private String dateFinish;
-    private String difficulty;
-    private String customer;
-    private String state;
-    private String address;
-    private String latitude;
-    private String longitude;
+public class Task implements Serializable {
 
+    @SerializedName("id")
+    @Expose
+    private int id;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("description")
+    @Expose
+    private String description;
+    @SerializedName("dateFinish")
+    @Expose
+    private String dateFinish;
+    @SerializedName("difficulty")
+    @Expose
+    private String difficulty;
+    @SerializedName("customer")
+    @Expose
+    private String customer;
+    @SerializedName("state")
+    @Expose
+    private String state;
+    @SerializedName("user")
+    @Expose
     private User user;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -59,20 +73,20 @@ public class MyTasks implements Serializable{
         this.difficulty = difficulty;
     }
 
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public String getCustomer() {
         return customer;
     }
 
     public void setCustomer(String customer) {
         this.customer = customer;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public User getUser() {
@@ -83,27 +97,4 @@ public class MyTasks implements Serializable{
         this.user = user;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
 }

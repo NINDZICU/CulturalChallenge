@@ -18,7 +18,7 @@
 
         />
     <TextView
-
+        android:id="@+id/tv_customer_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -29,6 +29,7 @@
 
         />
     <TextView
+        android:id="@+id/tv_task_detail"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +51,7 @@
             android:textColor="@color/colorText"
             />
         <TextView
-
+            android:id="@+id/tv_difficulty_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -66,7 +67,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -75,7 +75,7 @@
             android:textColor="@color/colorText"
             />
         <TextView
-
+            android:id="@+id/tv_date_of_end_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
@@ -86,6 +86,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/tv_text_confirm"
         android:layout_weight="0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -102,7 +103,7 @@
 
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/imageButton_done"
             android:layout_width="60dp"
             android:layout_marginRight="30dp"
             android:layout_height="59dp"
@@ -110,6 +111,7 @@
 
 
         <ImageButton
+            android:id="@+id/imageButton_confirm"
             android:layout_marginLeft="30dp"
             android:layout_width="60dp"
             android:layout_height="59dp"

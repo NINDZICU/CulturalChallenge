@@ -2,8 +2,10 @@ package com.kpfu.itis.culturalchallenge.fragments;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +13,23 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.kpfu.itis.culturalchallenge.R;
+import com.kpfu.itis.culturalchallenge.providers.SharedPreferencesProvider;
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
 import com.vk.sdk.VKScope;
 import com.vk.sdk.VKSdk;
 import com.vk.sdk.api.VKApi;
+import com.vk.sdk.api.VKApiConst;
 import com.vk.sdk.api.VKError;
+import com.vk.sdk.api.VKParameters;
+import com.vk.sdk.api.VKRequest;
+import com.vk.sdk.api.VKResponse;
+import com.vk.sdk.api.model.VKApiModel;
+import com.vk.sdk.api.model.VKList;
+
+import org.json.JSONException;
+
+import java.util.Arrays;
 
 /**
  * Created by Anatoly on 11.07.2017.
@@ -57,6 +70,27 @@ public class AuthentificationFragment extends Fragment {
 // Пользователь успешно авторизовался
                 access_token = res;
                 access_token.saveTokenToSharedPreferences(getActivity().getApplicationContext(), VKAccessToken.ACCESS_TOKEN);
+
+
+                final VKRequest request = VKApi.users().get(VKParameters.from(VKApiConst.ACCESS_TOKEN, access_token.accessToken));
+                request.executeWithListener(new VKRequest.VKRequestListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.M)
+                    @Override
+                    public void onComplete(VKResponse response) {
+                        super.onComplete(response);
+                        VKList list = (VKList) response.parsedModel;
+                        for (int i = 0; i < list.size(); i++) {
+                            try {
+                                System.out.println("ID " + list.get(i).fields.get("id"));
+                                String vkID = list.get(i).fields.get("id").toString();
+                                SharedPreferencesProvider.getInstance(getContext()).saveVkId(vkID);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                });
                 getActivity().getFragmentManager().popBackStack();
             }
 

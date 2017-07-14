@@ -7,27 +7,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kpfu.itis.culturalchallenge.MainActivity;
 import com.kpfu.itis.culturalchallenge.R;
+import com.kpfu.itis.culturalchallenge.api.ArtApi;
+import com.kpfu.itis.culturalchallenge.entities.MyTasks;
+import com.kpfu.itis.culturalchallenge.entities.Task;
 import com.kpfu.itis.culturalchallenge.entities.Tasks;
 import com.kpfu.itis.culturalchallenge.fragments.TaskDetailFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * Created by Anatoly on 11.07.2017.
  */
 
 public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdapter.TasksViewHolder>{
-    private List<Tasks> mTasks;
+    private List<Task> mTasks;
     private Context context;
     private MainActivity mainActivity;
 
     public TasksRecyclerAdapter(Context context, Activity activity){
         this.context = context;
         this.mainActivity = (MainActivity) activity;
+        mTasks = new ArrayList<>();
     }
 
     @Override
@@ -42,7 +50,7 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
 
     @Override
     public void onBindViewHolder(TasksViewHolder holder, int position) {
-        final Tasks task =  mTasks.get(position);
+        final Task task =  mTasks.get(position);
         holder.tvCustomer.setText(task.getCustomer());
         holder.tvTask.setText(task.getName());
         holder.tvDeadline.setText(task.getDateFinish());
@@ -50,19 +58,15 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TaskDetailFragment fragment = new TaskDetailFragment();
+                TaskDetailFragment fragment = new TaskDetailFragment().newInstance(task);
                 mainActivity.getFragmentManager().beginTransaction()
-                        .replace(R.id.tasks_recycler_view, fragment, TaskDetailFragment.class.getName()).commit();
+                        .add(R.id.task_detail_frame, fragment, TaskDetailFragment.class.getName()).commit();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        //TODO заполнение тасков с сервера
-        mTasks = new ArrayList<>();
-        mTasks.add(new Tasks("Saddas", "asdasd", "asdasd", "asdasd", "asdasd"));
-        mTasks.add(new Tasks("LKEKEKE", "LOLOL", "asdasd", "asdasd", "asdasd"));
         return mTasks.size();
     }
 
@@ -78,5 +82,12 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
             tvTask = (TextView) itemView.findViewById(R.id.tv_task);
             tvDeadline = (TextView) itemView.findViewById(R.id.tv_deadline);
         }
+    }
+
+
+    public void setmTasks(List<Task> mTasks) {
+        this.mTasks = mTasks;
+        System.out.println(mTasks);
+        notifyDataSetChanged();
     }
 }
