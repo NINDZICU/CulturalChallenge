@@ -1,11 +1,11 @@
 package com.kpfu.itis.culturalchallenge.fragments;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +24,6 @@ import com.vk.sdk.api.VKError;
 import com.vk.sdk.api.VKParameters;
 import com.vk.sdk.api.VKRequest;
 import com.vk.sdk.api.VKResponse;
-import com.vk.sdk.api.model.VKApiModel;
 import com.vk.sdk.api.model.VKList;
 
 import org.json.JSONException;
@@ -56,7 +55,7 @@ public class AuthentificationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (!VKSdk.isLoggedIn()) {
-                    VKSdk.login(AuthentificationFragment.this, scope);
+                    VKSdk.login(getActivity(), scope);
                 }
             }
         });
@@ -91,7 +90,7 @@ public class AuthentificationFragment extends Fragment {
                     }
 
                 });
-                getActivity().getFragmentManager().popBackStack();
+                getActivity().getSupportFragmentManager().popBackStack();
             }
 
             @Override

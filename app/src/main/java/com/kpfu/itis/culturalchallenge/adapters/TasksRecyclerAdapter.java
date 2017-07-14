@@ -59,7 +59,7 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
             @Override
             public void onClick(View v) {
                 TaskDetailFragment fragment = new TaskDetailFragment().newInstance(task);
-                mainActivity.getFragmentManager().beginTransaction()
+                mainActivity.getSupportFragmentManager().beginTransaction()
                         .add(R.id.task_detail_frame, fragment, TaskDetailFragment.class.getName()).commit();
             }
         });

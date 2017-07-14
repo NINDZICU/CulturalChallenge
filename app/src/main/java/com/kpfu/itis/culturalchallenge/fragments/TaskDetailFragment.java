@@ -1,8 +1,8 @@
 package com.kpfu.itis.culturalchallenge.fragments;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.kpfu.itis.culturalchallenge.R;
-import com.kpfu.itis.culturalchallenge.entities.MyTasks;
 import com.kpfu.itis.culturalchallenge.entities.Task;
-import com.kpfu.itis.culturalchallenge.entities.Tasks;
 
 /**
  * Created by Anatoly on 11.07.2017.

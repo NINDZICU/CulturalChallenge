@@ -4,25 +4,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
+import com.kpfu.itis.culturalchallenge.entities.Task;
 import com.kpfu.itis.culturalchallenge.fragments.AuthentificationFragment;
+import com.kpfu.itis.culturalchallenge.providers.SharedPreferencesProvider;
+import com.kpfu.itis.culturalchallenge.service.ApiService;
 import com.vk.sdk.VKAccessToken;
-import com.vk.sdk.VKScope;
 import com.vk.sdk.VKSdk;
 import com.vk.sdk.api.VKApi;
 import com.vk.sdk.api.VKApiConst;
+import com.vk.sdk.api.VKError;
 import com.vk.sdk.api.VKParameters;
 import com.vk.sdk.api.VKRequest;
 import com.vk.sdk.api.VKResponse;
-import com.vk.sdk.api.methods.VKApiFriends;
 import com.vk.sdk.api.model.VKList;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
 import com.kpfu.itis.culturalchallenge.custom.TabViewWrapper;
 
 import butterknife.BindView;
