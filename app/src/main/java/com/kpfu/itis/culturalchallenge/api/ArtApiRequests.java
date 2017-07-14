@@ -7,6 +7,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -23,5 +24,9 @@ public interface ArtApiRequests {
 
     @GET("tasks/getMy")
     Observable<List<Task>> getMyTasks(@Query("login") String login);
+
+    @POST("user/reg")
+    Observable<String> saveUser(@Query("login") String login, @Query("name") String name, @Query("city") String city);
+
 
 }

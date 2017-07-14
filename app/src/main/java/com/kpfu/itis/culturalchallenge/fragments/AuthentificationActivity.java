@@ -1,19 +1,15 @@
 package com.kpfu.itis.culturalchallenge.fragments;
 
 import android.content.Intent;
-import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.kpfu.itis.culturalchallenge.R;
 import com.kpfu.itis.culturalchallenge.providers.SharedPreferencesProvider;
+import com.kpfu.itis.culturalchallenge.service.ApiService;
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
 import com.vk.sdk.VKScope;
@@ -28,37 +24,28 @@ import com.vk.sdk.api.model.VKList;
 
 import org.json.JSONException;
 
-/**
- * Created by Anatoly on 11.07.2017.
- */
-
-public class AuthentificationFragment extends Fragment {
+public class AuthentificationActivity extends AppCompatActivity {
     private Button btnEnter;
     private String[] scope = new String[]{VKScope.FRIENDS};
     private VKAccessToken access_token;
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.login, container, false);
-        return view;
-    }
+    private ApiService apiService;
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        btnEnter = (Button) view.findViewById(R.id.btn_enter);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.login);
+        btnEnter = (Button) findViewById(R.id.btn_enter);
 
         btnEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!VKSdk.isLoggedIn()) {
-                    VKSdk.login(getActivity(), scope);
+                    VKSdk.login(AuthentificationActivity.this, scope);
                 }
             }
         });
-    }
 
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
@@ -66,16 +53,15 @@ public class AuthentificationFragment extends Fragment {
             public void onResult(VKAccessToken res) {
 // Пользователь успешно авторизовался
                 access_token = res;
-                access_token.saveTokenToSharedPreferences(getActivity().getApplicationContext(), VKAccessToken.ACCESS_TOKEN);
+                access_token.saveTokenToSharedPreferences(getApplicationContext(), VKAccessToken.ACCESS_TOKEN);
 
 
                 final VKRequest request = VKApi.users().get(VKParameters.from(VKApiConst.ACCESS_TOKEN, access_token.accessToken));
                 request.executeWithListener(new VKRequest.VKRequestListener() {
                     @Override
                     public void onError(VKError error) {
-                        System.out.println("ERRRRRRRRRRRRRRRRRRRRRRRRRRRRRROOOOOOOOORRRRRRRRRR K");
-                    }
 
+                    }
                     @Override
                     public void onComplete(VKResponse response) {
                         super.onComplete(response);
@@ -83,25 +69,26 @@ public class AuthentificationFragment extends Fragment {
                         for (int i = 0; i < list.size(); i++) {
                             try {
                                 System.out.println("ID " + list.get(i).fields.get("id"));
-                                System.out.println("name "+list.get(i).fields.toString());
-                                System.out.println("name "+list.get(i).fields.get("first_name"));
-                                System.out.println("name "+list.get(i).fields.get("last_name"));
                                 String vkID = list.get(i).fields.get("id").toString();
-                                SharedPreferencesProvider.getInstance(getContext()).saveVkId(vkID);
+                                SharedPreferencesProvider.getInstance(AuthentificationActivity.this).saveVkId(vkID);
+                                SharedPreferencesProvider.getInstance(AuthentificationActivity.this)
+                                        .saveVkName(list.get(i).fields.get("first_name").toString()+list.get(i).fields.get("last_name"));
+                                apiService = new ApiService(getApplicationContext());
+                                apiService.saveUser(vkID, list.get(i).fields.get("first_name").toString()+list.get(i).fields.get("last_name"), "kazan" );
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
+                        finish();
                     }
 
                 });
-                getActivity().getSupportFragmentManager().popBackStack();
             }
 
             @Override
             public void onError(VKError error) {
 // Произошла ошибка авторизации (например, пользователь запретил авторизацию)
-                Toast.makeText(getActivity().getApplicationContext(), "Error authentification", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error authentification", Toast.LENGTH_SHORT).show();
             }
         })) {
             super.onActivityResult(requestCode, resultCode, data);
