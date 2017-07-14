@@ -13,6 +13,7 @@
             android:layout_weight="5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
             android:gravity="right"
             android:textColor="@color/colorText"
             />
@@ -27,7 +28,7 @@
         android:textStyle="bold"
         android:textAllCaps="true"
         android:textSize="18sp"
-        android:text="rgrreg"/>
+        android:fontFamily="sans-serif-condensed"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="200dp"
@@ -42,16 +43,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <TextView
+        <TextView
 
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textColor="@color/colorText"
-        android:text="@string/level"/>
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorText"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/level"/>
 
         <TextView
             android:layout_weight="1"
@@ -61,6 +63,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
             android:textColor="@color/colorText"
             />
 
@@ -76,6 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="right"
+            android:fontFamily="sans-serif-condensed"
             android:textStyle="bold"
             android:textColor="@color/colorText"
             android:text="@string/coins"/>
@@ -85,6 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
+            android:fontFamily="sans-serif-condensed"
             android:layout_marginLeft="5dp"
             android:textStyle="bold"
             android:textColor="@color/colorText"
@@ -99,6 +104,7 @@
         android:textAlignment="center"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
         android:textColor="@color/colorText"
         android:textAllCaps="true"
         android:text="@string/attainment"/>

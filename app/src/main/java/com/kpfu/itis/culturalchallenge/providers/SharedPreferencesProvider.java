@@ -16,8 +16,9 @@ import java.util.List;
  */
 
 public class SharedPreferencesProvider {
-    public static final String VK_ID_PREFERENCES = "VK_ID";
     public static final String PREFERENCES_NAME = "PREFERENCES_NAME";
+    public static final String VK_ID_PREFERENCES = "VK_ID";
+    public static final String VK_NAME_PREFERENCES = "NAME_PREFEERENCES";
 
     private static SharedPreferencesProvider sInstance;
     private Context context;
@@ -56,6 +57,32 @@ public class SharedPreferencesProvider {
         Type listType = new TypeToken<String>() {
         }.getType();
         String jsonText = gson.toJson(vkId, listType);
+        editor.putString(PREFERENCES_NAME, jsonText);
+        editor.commit();
+    }
+    public String getVkName() {
+        SharedPreferences preferences = context.getSharedPreferences(VK_NAME_PREFERENCES, Context.MODE_PRIVATE);
+        if (preferences.contains(PREFERENCES_NAME)) {
+            Gson gson = new Gson();
+            String jsonText = preferences.getString(PREFERENCES_NAME, "");
+            Type listType = new TypeToken<String>() {
+            }.getType();
+            String vkId = gson.fromJson(jsonText, listType);
+            return vkId;
+        } else {
+            String vkId = null;
+            saveVkId(vkId);
+            return vkId;
+        }
+    }
+
+    public void saveVkName(String name) {
+        SharedPreferences preferences = context.getSharedPreferences(VK_NAME_PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        Type listType = new TypeToken<String>() {
+        }.getType();
+        String jsonText = gson.toJson(name, listType);
         editor.putString(PREFERENCES_NAME, jsonText);
         editor.commit();
     }

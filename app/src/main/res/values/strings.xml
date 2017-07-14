@@ -23,10 +23,12 @@
     <string name="level">Уровень: </string>
     <string name="send">Отправить </string>
     <string name="your_task">Ваше задание </string>
+    <string name="string">Запомните самое главное: процесс самосовершенствования не должен прерываться никогда, ему нет начала и нет конца.</string>
     <string name="attainment">Достижения</string>
     <string name="coins">Монет:</string>
     <string name="challenge">Вы готовы принять вызов?</string>
     <string name="done">Завершить?</string>
+    <string name="art">Art Call</string>
     <integer name="com_vk_sdk_AppId">6109909</integer>
 
 

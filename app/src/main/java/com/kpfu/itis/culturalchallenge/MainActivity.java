@@ -13,6 +13,7 @@ import com.kpfu.itis.culturalchallenge.fragments.Fragment3;
 import com.kpfu.itis.culturalchallenge.fragments.Fragment4;
 import com.kpfu.itis.culturalchallenge.fragments.HomeFragment;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ import com.kpfu.itis.culturalchallenge.custom.TabViewWrapper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements TabViewWrapper.TabListener{
+public class MainActivity extends AppCompatActivity implements TabViewWrapper.TabListener {
 
     @BindView(R.id.tab_pager)
     ViewPager mTabPager;
@@ -35,12 +36,12 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mTabViewWrapper=new TabViewWrapper(mTabLayout);
+        mTabViewWrapper = new TabViewWrapper(mTabLayout);
         mTabViewWrapper.setSelectedTab(0);
         mTabViewWrapper.setSelectColor(R.color.button_pressed);
         mTabViewWrapper.setTabListenerClick(this);
-        mTabPagerAdapter=new TabPagerAdapter(getSupportFragmentManager());
-        List<Fragment> tabFragment=new ArrayList<>();
+        mTabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
+        List<Fragment> tabFragment = new ArrayList<>();
         tabFragment.add(HomeFragment.getInstance());
         tabFragment.add(Fragment2.getInstance());
         tabFragment.add(Fragment3.getInstance());
@@ -52,6 +53,6 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
 
     @Override
     public void onTabClick(int position, View tab) {
-        mTabPager.setCurrentItem(position,true);
+        mTabPager.setCurrentItem(position, true);
     }
 }

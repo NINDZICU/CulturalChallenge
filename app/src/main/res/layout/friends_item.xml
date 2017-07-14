@@ -9,7 +9,6 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_margin="10dp"
-
        app:cardCornerRadius="10dp"
        app:cardBackgroundColor="@color/colorBack"
        app:cardElevation="5dp">
@@ -27,69 +26,79 @@
                    android:layout_height="wrap_content"
                    android:orientation="vertical">
 
-           <TextView
-               android:layout_weight="1"
-               android:layout_marginTop="10dp"
-               android:layout_marginLeft="15dp"
-               android:layout_width="match_parent"
-               android:textAllCaps="true"
-               android:textColor="@color/colorTextWhite"
-               android:textStyle="bold"
-               android:layout_height="wrap_content" />
+                   <TextView
+                       android:id="@+id/login"
+                       android:layout_weight="1"
+                       android:layout_marginTop="10dp"
+                       android:layout_marginLeft="15dp"
+                       android:layout_width="match_parent"
+                       android:fontFamily="sans-serif-condensed"
+                       android:textAllCaps="true"
+                       android:textColor="@color/colorTextWhite"
+                       android:textStyle="bold"
+                       android:layout_height="wrap_content" />
 
                    <TextView
+                       android:id="@+id/name"
                        android:layout_weight="1"
                        android:textStyle="italic"
                        android:textColor="@color/colorTextWhite"
                        android:layout_marginTop="4dp"
                        android:layout_marginLeft="15dp"
+                       android:fontFamily="sans-serif-condensed"
                        android:layout_width="match_parent"
                        android:textAllCaps="true"
                        android:layout_height="wrap_content" />
 
                </LinearLayout>
 
-       <LinearLayout
-           android:layout_weight="1"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical">
-
-               <TextView
+               <LinearLayout
                    android:layout_weight="1"
-                   android:layout_marginLeft="15dp"
-                   android:layout_width="match_parent"
-                   android:textStyle="italic"
-                   android:gravity="bottom|right"
-                   android:textColor="@color/colorTextWhite"
-                   android:layout_height="70dp" />
-           <LinearLayout
-               android:layout_weight="1"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content">
-
-           <TextView
-               android:layout_weight="1"
-               android:layout_gravity="right"
-               android:gravity="right"
-               android:textStyle="italic|bold"
-               android:layout_marginRight="3dp"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:textColor="@color/colorTextWhite"/>
-
-               <TextView
-                   android:layout_weight="1"
-                   android:layout_gravity="right"
-                   android:gravity="left"
-                   android:text="баллов"
-                   android:textStyle="italic"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:textColor="@color/colorTextWhite"/>
-           </LinearLayout>
+                   android:orientation="vertical">
 
-           </LinearLayout>
+                   <TextView
+                       android:id="@+id/city"
+                       android:layout_weight="1"
+                       android:layout_marginLeft="15dp"
+                       android:layout_width="match_parent"
+                       android:fontFamily="sans-serif-condensed"
+                       android:textStyle="italic"
+                       android:gravity="bottom|right"
+                       android:textColor="@color/colorTextWhite"
+                       android:layout_height="70dp" />
+                   <LinearLayout
+                       android:layout_weight="1"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content">
+
+                       <TextView
+                           android:id="@+id/points"
+                           android:layout_weight="1"
+                           android:layout_gravity="right"
+                           android:gravity="right"
+                           android:textStyle="italic|bold"
+                           android:layout_marginRight="3dp"
+                           android:layout_width="match_parent"
+                           android:fontFamily="sans-serif-condensed"
+                           android:layout_height="wrap_content"
+                           android:textColor="@color/colorTextWhite"/>
+
+                       <TextView
+                           android:id="@+id/tv_points"
+                           android:layout_weight="1"
+                           android:layout_gravity="right"
+                           android:gravity="left"
+                           android:text="баллов"
+                           android:textStyle="italic"
+                           android:fontFamily="sans-serif-condensed"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:textColor="@color/colorTextWhite"/>
+                   </LinearLayout>
+
+               </LinearLayout>
 
                <de.hdodenhof.circleimageview.CircleImageView
                    android:layout_weight="1"

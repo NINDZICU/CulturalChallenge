@@ -1,11 +1,12 @@
 package com.kpfu.itis.culturalchallenge.splash;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
-
+import android.widget.TextView;
 
 import com.kpfu.itis.culturalchallenge.MainActivity;
 import com.kpfu.itis.culturalchallenge.R;
@@ -31,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 try {
                     for (cnt = 1; cnt < max; cnt = cnt + 2) {
-                        TimeUnit.MILLISECONDS.sleep(100);
+                        TimeUnit.MILLISECONDS.sleep(200);
                         // обновляем ProgressBar
                         h.post(updateProgress);
                     }
@@ -48,7 +49,19 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 5 * 1000);
+        }, 7 * 1000);
+
+
+        TextView textViewSplash = (TextView) findViewById(R.id.tv_splash);
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Oswald-SemiBold.ttf");
+        textViewSplash.setTypeface(tf);
+        TextView textView = (TextView) findViewById(R.id.tv_splash_2);
+        textView.setTypeface(tf);
+
+
+        Typeface tf2 = Typeface.createFromAsset(getAssets(), "fonts/MarckScript-Regular.ttf");
+        TextView string = (TextView) findViewById(R.id.string);
+        string.setTypeface(tf2);
     }
 
     // обновление ProgressBar
