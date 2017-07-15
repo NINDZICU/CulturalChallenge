@@ -19,11 +19,11 @@ import java.util.List;
  * Created by Anatoly on 11.07.2017.
  */
 
-public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdapter.TasksViewHolder>{
+public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdapter.TasksViewHolder> {
     private List<Task> mTasks;
     private TaskListener mTaskListener;
 
-    public TasksRecyclerAdapter(){
+    public TasksRecyclerAdapter() {
         mTasks = Collections.emptyList();
     }
 
@@ -51,7 +51,7 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
         return mTasks.size();
     }
 
-    public class TasksViewHolder extends RecyclerView.ViewHolder{
+    public class TasksViewHolder extends RecyclerView.ViewHolder {
         TextView tvCustomer;
         TextView tvTask;
         TextView tvDeadline;
@@ -64,17 +64,19 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
             tvDeadline = (TextView) itemView.findViewById(R.id.tv_deadline);
         }
 
-        void bind(Task task){
+        void bind(Task task) {
             tvCustomer.setText(task.getCustomer());
             tvTask.setText(task.getName());
             tvDeadline.setText(task.getDateFinish());
-            if(mTaskListener !=null){
-                mTaskListener.onTaskClick(task);
-            }
+            itemView.setOnClickListener(v -> {
+                if (mTaskListener != null) {
+                    mTaskListener.onTaskClick(task);
+                }
+            });
         }
     }
 
-    public interface TaskListener{
+    public interface TaskListener {
         void onTaskClick(Task task);
     }
 
