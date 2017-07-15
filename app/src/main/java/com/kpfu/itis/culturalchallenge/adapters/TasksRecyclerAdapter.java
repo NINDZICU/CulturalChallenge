@@ -68,9 +68,11 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
             tvCustomer.setText(task.getCustomer().getName());
             tvTask.setText(task.getName());
             tvDeadline.setText(task.getDateFinish());
-            if(mTaskListener !=null){
-                mTaskListener.onTaskClick(task);
-            }
+            itemView.setOnClickListener(v -> {
+                if (mTaskListener != null) {
+                    mTaskListener.onTaskClick(task);
+                }
+            });
         }
     }
 
@@ -83,5 +85,4 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
         this.mTasks = mTasks;
         notifyDataSetChanged();
     }
-
 }
