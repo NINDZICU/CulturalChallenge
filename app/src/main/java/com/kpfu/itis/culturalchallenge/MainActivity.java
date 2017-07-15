@@ -33,30 +33,35 @@ import com.kpfu.itis.culturalchallenge.custom.TabViewWrapper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements TabViewWrapper.TabListener{
+public class MainActivity extends AppCompatActivity implements TabViewWrapper.TabListener {
 
-    @BindView(R.id.text_of_fact)
-    TextView textOfFact;
-    @BindView(R.id.task_for_today)
-    TextView taskForToday;
-    @BindView(R.id.tasks_recycler_view)
-    RecyclerView tasksRecyclerView;
+    @BindView(R.id.tab_pager)
+    ViewPager mTabPager;
     @BindView(R.id.tabs)
     LinearLayout mTabLayout;
     private ApiService apiService;
     private VKAccessToken access_token;
     private TasksRecyclerAdapter taskAdapter;
     private TabViewWrapper mTabViewWrapper;
+    private TabPagerAdapter mTabPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home);
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mTabViewWrapper=new TabViewWrapper(mTabLayout);
+        mTabViewWrapper = new TabViewWrapper(mTabLayout);
         mTabViewWrapper.setSelectedTab(0);
         mTabViewWrapper.setSelectColor(R.color.button_pressed);
         mTabViewWrapper.setTabListenerClick(this);
+        mTabPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
+        List<Fragment> tabFragment = new ArrayList<>();
+        tabFragment.add(HomeFragment.getInstance());
+        tabFragment.add(Fragment2.getInstance());
+        tabFragment.add(Fragment3.getInstance());
+        tabFragment.add(Fragment4.getInstance());
+        mTabPagerAdapter.setFragmentList(tabFragment);
+        mTabPager.setAdapter(mTabPagerAdapter);
 
         access_token = VKAccessToken.tokenFromSharedPreferences(this, VKAccessToken.ACCESS_TOKEN);
         if (!VKSdk.isLoggedIn()) {
@@ -66,8 +71,7 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
         } else {
 
             System.out.println(access_token.accessToken);
-             VKRequest request = VKApi.friends().getAppUsers(VKParameters.from());
-//            VKRequest request = new VKRequest("friends.getAppUsers", null);
+            final VKRequest request = VKApi.friends().getAppUsers(VKParameters.from(VKApiConst.ACCESS_TOKEN, access_token.accessToken));
             request.executeWithListener(new VKRequest.VKRequestListener() {
                 @Override
                 public void onError(VKError error) {
@@ -78,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
                 public void onComplete(VKResponse response) {
                     super.onComplete(response);
                     VKList list = (VKList) response.parsedModel;
-                    System.out.println("FRIENDS IN APP "+Arrays.asList(list));
+                    System.out.println(Arrays.asList(list));
                 }
             });
 
@@ -100,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
 
     @Override
     public void onTabClick(int position, View tab) {
-
-
+        mTabPager.setCurrentItem(position, true);
     }
 }

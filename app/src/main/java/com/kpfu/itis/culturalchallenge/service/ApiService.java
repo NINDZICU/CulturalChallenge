@@ -1,12 +1,10 @@
 package com.kpfu.itis.culturalchallenge.service;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
 import com.kpfu.itis.culturalchallenge.api.ArtApi;
-import com.kpfu.itis.culturalchallenge.entities.MyTasks;
 import com.kpfu.itis.culturalchallenge.entities.Task;
 
 import java.util.ArrayList;
@@ -33,7 +31,7 @@ public class ApiService {
         artApi.getMyTasks(login).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(tasks -> {
-                   adapter.setmTasks(tasks);
+                   adapter.setTasks(tasks);
                 },throwable ->
                         Toast.makeText(context,"Throw "+throwable.getMessage(),Toast.LENGTH_SHORT).show());
         return mTasks;

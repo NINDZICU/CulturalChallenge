@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kpfu.itis.culturalchallenge">
+          package="com.kpfu.itis.culturalchallenge">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".activity.Application"
         android:allowBackup="true"
@@ -12,19 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name="com.kpfu.itis.culturalchallenge.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".splash.SplashActivity" />
+        <activity
+            android:name=".splash.SplashActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.vk.sdk.VKServiceActivity"
             android:label="ServiceActivity"
-            android:theme="@style/VK.Transparent" />
-        <activity android:name=".fragments.AuthentificationActivity"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/VK.Transparent"/>
     </application>
 
 </manifest>
