@@ -53,7 +53,6 @@ public class FriendsRecyclerAdapter extends RecyclerView.Adapter<FriendsRecycler
 
     @Override
     public int getItemCount() {
-        //TODO заполнение тасков с сервера
         mFriends = new ArrayList<>();
 
         return mFriends.size();

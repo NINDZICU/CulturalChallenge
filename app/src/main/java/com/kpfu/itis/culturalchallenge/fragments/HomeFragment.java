@@ -77,7 +77,6 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onError(VKError error) {
                     super.onError(error);
-                    System.out.println("ERRROORORORR " + error.errorMessage);
                 }
 
                 @Override

@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
 import com.kpfu.itis.culturalchallenge.api.ArtApi;
 import com.kpfu.itis.culturalchallenge.entities.Task;
+import com.kpfu.itis.culturalchallenge.entities.Tasks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,36 +23,38 @@ public class ApiService {
     private Context context;
     private ArtApi artApi = new ArtApi();
 
-    public ApiService(Context context){
+    public ApiService(Context context) {
         this.context = context;
     }
 
-    public List<Task> getMyTasks(String login, TasksRecyclerAdapter adapter){
-         List<Task> mTasks = new ArrayList<>();
+    public List<Task> getMyTasks(String login, TasksRecyclerAdapter adapter) {
+        List<Task> mTasks = new ArrayList<>();
         artApi.getMyTasks(login).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(tasks -> {
-                   adapter.setTasks(tasks);
-                },throwable ->
-                        Toast.makeText(context,"Throw "+throwable.getMessage(),Toast.LENGTH_SHORT).show());
+                    adapter.setTasks(tasks);
+                }, throwable ->
+                        Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show());
         return mTasks;
     }
-    public void saveUser(String login, String name, String city){
+
+    public void saveUser(String login, String name, String city) {
         artApi.saveUser(login, name, city).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(code -> {
-                },throwable ->
-                        Toast.makeText(context,"Throw "+throwable.getMessage(),Toast.LENGTH_SHORT).show());
+                }, throwable ->
+                        Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
-    public List<Task> getAllTasks(String city, TasksRecyclerAdapter adapter){
+    public List<Task> getAllTasks(String city, TasksRecyclerAdapter adapter) {
         List<Task> mTasks = new ArrayList<>();
         artApi.getAllTasks(city).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(tasks -> {
-                    adapter.setmTasks(tasks);
-                },throwable ->
-                        Toast.makeText(context,"Throw "+throwable.getMessage(),Toast.LENGTH_SHORT).show());
+                    adapter.setTasks(tasks);
+                }, throwable -> {
+                    Toast.makeText(context, "Throw ALLTasks" + throwable.getMessage(), Toast.LENGTH_LONG).show();
+                });
         return mTasks;
     }
 }

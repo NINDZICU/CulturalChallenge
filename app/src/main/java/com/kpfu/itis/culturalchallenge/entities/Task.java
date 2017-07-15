@@ -5,6 +5,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Set;
 
 public class Task implements Serializable {
 
@@ -23,15 +24,30 @@ public class Task implements Serializable {
     @SerializedName("difficulty")
     @Expose
     private String difficulty;
-    @SerializedName("customer")
-    @Expose
-    private String customer;
     @SerializedName("state")
     @Expose
     private String state;
     @SerializedName("user")
     @Expose
     private User user;
+
+    @SerializedName("customer")
+    @Expose
+    private User customer;
+    @SerializedName("address")
+    @Expose
+    private String address;
+    @SerializedName("latitude")
+    @Expose
+    private String latitude;
+    @SerializedName("longitude")
+    @Expose
+    private String longitude;
+
+    @SerializedName("users")
+    @Expose
+    private Set<User> users;
+
 
     public int getId() {
         return id;
@@ -73,11 +89,11 @@ public class Task implements Serializable {
         this.difficulty = difficulty;
     }
 
-    public String getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(String customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
 
@@ -97,4 +113,36 @@ public class Task implements Serializable {
         this.user = user;
     }
 
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }

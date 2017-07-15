@@ -54,7 +54,7 @@ public class TaskDetailFragment extends Fragment {
         btnDone = (ImageButton) view.findViewById(R.id.imageButton_done);
         btnConfirm = (ImageButton) view.findViewById(R.id.imageButton_confirm);
 
-        tvCustomer.setText(task.getCustomer());
+        tvCustomer.setText(task.getCustomer().getName());
         tvTaskDetail.setText(task.getDescription());
         tvComplexity.setText(task.getDifficulty());
         tvDateOfEnd.setText(task.getDateFinish());
