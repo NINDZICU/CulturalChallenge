@@ -3,17 +3,18 @@
     <string name="hello">Добро пожаловать!</string>
     <string name="Socrates">"Невозможно жить лучше, чем проводя жизнь в стремлении стать совершеннее"</string>
     <string name="author_Socrates">Сократ</string>
-    <string name="authorization">Авторизуйтесь, пожалуйста!</string>
+    <string name="authorization">Авторизуйтесь, пожалуйста, через приложение ВКонтакте!</string>
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
-    <string name="log_in">Войти</string>
+    <string name="log_in">Войти в аккаунт</string>
     <string name="check_in">Зарегистрироваться</string>
     <string name="Folkner">"Всегда мечтайте и стремитесь к большему, чем вы знаете, что можете достигнуть. Не трудитесь быть лучше своих предшественников или современников. Старайтесь быть лучше самих себя"
     </string>
     <string name="author_Folkner">Уильям Фолкнер</string>
 
-    <string name="form">Заполните форму регистрации</string>
+    <string name="form">Введите город проживания</string>
     <string name="name">Имя</string>
+    <string name="save">Сохранить</string>
     <string name="city">Город проживания</string>
     <string name="fact">Факт дня</string>
     <string name="task_for_today">ЗАДАНИЕ НА СЕГОДНЯ</string>
