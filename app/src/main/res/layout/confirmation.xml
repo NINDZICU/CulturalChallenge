@@ -99,6 +99,8 @@
         android:text="@string/challenge"
         android:fontFamily="sans-serif-condensed"
         android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:textColor="@color/colorText"
         />
     <LinearLayout
