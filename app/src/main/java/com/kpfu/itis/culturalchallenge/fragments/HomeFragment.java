@@ -65,6 +65,8 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+
+        access_token = VKAccessToken.tokenFromSharedPreferences(getContext(), VKAccessToken.ACCESS_TOKEN);
         if (!VKSdk.isLoggedIn()) {
             Intent intent = new Intent(getActivity(), AuthentificationActivity.class);
             startActivity(intent);
