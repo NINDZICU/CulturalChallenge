@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,6 +110,7 @@ public class HomeFragment extends Fragment {
                         mConfirmTask.confirm(task1.getAddress()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(confirm->{
                                     if(confirm){
+                                        Log.d("GEO","GPS SUCCESS" );
                                         apiService.successTask(SharedPreferencesProvider.getInstance(getContext()).getVkId(),
                                                task1.getId() );
                                     }else{

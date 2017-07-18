@@ -10,10 +10,10 @@ public class Location {
 
     @SerializedName("lat")
     @Expose
-    private Double lat;
+    private double lat;
     @SerializedName("lng")
     @Expose
-    private Double lng;
+    private double lng;
 
     public boolean isExist() {
         return isExist;
@@ -23,7 +23,7 @@ public class Location {
         isExist = exist;
     }
 
-    public Double getLat() {
+    public double getLat() {
         return lat;
     }
 
@@ -31,7 +31,7 @@ public class Location {
         this.lat = lat;
     }
 
-    public Double getLng() {
+    public double getLng() {
         return lng;
     }
 
