@@ -6,12 +6,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class Location {
 
+    private boolean isExist=true;
+
     @SerializedName("lat")
     @Expose
     private Double lat;
     @SerializedName("lng")
     @Expose
     private Double lng;
+
+    public boolean isExist() {
+        return isExist;
+    }
+
+    public void setExist(boolean exist) {
+        isExist = exist;
+    }
 
     public Double getLat() {
         return lat;

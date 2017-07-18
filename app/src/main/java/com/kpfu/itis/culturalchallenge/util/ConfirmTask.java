@@ -39,7 +39,7 @@ public class ConfirmTask {
     public Observable<Boolean> exists(String taskAddress){
         return mGeocodeApi.getCoordinatesByAddress(taskAddress).flatMap(location -> Observable.<Boolean>create(e -> {
             try {
-                if (location == null) {
+                if (!location.isExist()) {
                     e.onNext(false);
                 } else {
                     e.onNext(true);
@@ -49,7 +49,7 @@ public class ConfirmTask {
             }finally {
                 e.onComplete();
             }
-        }));
+        })).take(1);
     }
 
     private boolean checkGps(){
