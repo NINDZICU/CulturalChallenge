@@ -47,7 +47,8 @@ public class NewTaskFragment extends Fragment {
     @BindView(R.id.radio_group)
     RadioGroup radioGroup;
 
-    private String date = "";
+    private ConfirmTask confirmTask;
+    private String date="";
 
     public static NewTaskFragment newInstance() {
         return new NewTaskFragment();
