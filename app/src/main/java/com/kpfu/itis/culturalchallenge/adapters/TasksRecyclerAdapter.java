@@ -83,4 +83,6 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
         this.mTasks = mTasks;
         notifyDataSetChanged();
     }
+
+
 }
