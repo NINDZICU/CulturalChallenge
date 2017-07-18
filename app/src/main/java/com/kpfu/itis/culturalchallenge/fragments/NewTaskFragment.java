@@ -87,7 +87,7 @@ public class NewTaskFragment extends Fragment {
                     !tvCityTask.getText().toString().equals("") && !date.equals("")) {
                 mProgressDialog = ProgressDialog.show(getContext(),
                         getContext().getString(R.string.check_address), getContext().getString(R.string.loading), true, false);
-                mConfirmTask.exists(tvAddressTask.getText().toString()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                mConfirmTask.exists(tvAddressTask.getText().toString()+" "+tvCityTask.getText().toString()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                         .subscribe(exist -> {
                             if (exist) {
                                 apiService.addTask(tvAddressTask.getText().toString(), SharedPreferencesProvider.getInstance(getContext()).getVkId(),
