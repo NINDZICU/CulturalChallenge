@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ArtApi {
 
     //Поменять надо на свой IP
-    private static final String BASE_URL = "http://192.168.1.3:8080/";
+    private static final String BASE_URL = "http://192.168.1.6:8080/";
     private ArtApiRequests mArtApiRequests;
 
     public ArtApi() {

@@ -1,5 +1,7 @@
-package com.kpfu.itis.culturalchallenge.activity;
+package com.kpfu.itis.culturalchallenge;
 
+import android.support.multidex.MultiDex;
+import android.support.multidex.MultiDexApplication;
 import android.widget.Toast;
 
 import com.vk.sdk.VKAccessToken;
@@ -7,10 +9,19 @@ import com.vk.sdk.VKAccessTokenTracker;
 import com.vk.sdk.VKSdk;
 
 /**
- * Created by Anatoly on 11.07.2017.
+ * Created by Rage on 18.07.2017.
  */
 
-public class Application extends android.app.Application {
+public class ArtApplication extends MultiDexApplication {
+
+    VKAccessTokenTracker vkAccessTokenTracker = new VKAccessTokenTracker() {
+        @Override
+        public void onVKAccessTokenChanged(VKAccessToken oldToken, VKAccessToken newToken) {
+            if (newToken == null) {
+                Toast.makeText(getApplicationContext(), "Invalid Token", Toast.LENGTH_SHORT);
+            }
+        }
+    };
 
     @Override
     public void onCreate() {
@@ -19,13 +30,5 @@ public class Application extends android.app.Application {
         VKSdk.initialize(this);
     }
 
-    VKAccessTokenTracker vkAccessTokenTracker = new VKAccessTokenTracker() {
-        @Override
-        public void onVKAccessTokenChanged(VKAccessToken oldToken, VKAccessToken newToken) {
-            if (newToken == null) {
-// VKAccessToken is invalid
-                Toast.makeText(getApplicationContext(), "Invalid Token", Toast.LENGTH_SHORT);
-            }
-        }
-    };
+
 }
