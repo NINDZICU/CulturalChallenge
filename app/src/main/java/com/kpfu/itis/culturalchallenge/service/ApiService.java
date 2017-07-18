@@ -57,4 +57,28 @@ public class ApiService {
                 });
         return mTasks;
     }
+
+    public void acceptTask(String login, Integer idTask) {
+        artApi.acceptTask(login, idTask).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(code -> {
+                }, throwable ->
+                        Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
+    public void successTask(String login, Integer idTask) {
+        artApi.successTask(login, idTask).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(code -> {
+                }, throwable ->
+                        Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
+    public void failTask(String login, Integer idTask) {
+        artApi.failTask(login, idTask).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(code -> {
+                }, throwable ->
+                        Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show());
+    }
 }

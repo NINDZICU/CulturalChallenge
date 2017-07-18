@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kpfu.itis.culturalchallenge.MainActivity;
 import com.kpfu.itis.culturalchallenge.R;
 import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
 import com.kpfu.itis.culturalchallenge.entities.Task;
@@ -62,6 +63,11 @@ public class Fragment2 extends Fragment {
         taskAdapter = new TasksRecyclerAdapter();
         taskAdapter.setTaskListener(task -> {
             TaskDetailFragment fragment = new TaskDetailFragment().newInstance(task);
+            fragment.setTaskListener(task1 -> {
+                apiService.acceptTask(SharedPreferencesProvider.getInstance(getContext()).getVkId(),task1.getId());
+                ((MainActivity)getActivity()).notifyDataSetChanged();
+            });
+            fragment.setTextConfirm("Вы готовы принять вызов?");
             getChildFragmentManager().beginTransaction()
                     .add(R.id.all_task_detail_frame, fragment, TaskDetailFragment.class.getName()).commit();
         });
@@ -70,4 +76,7 @@ public class Fragment2 extends Fragment {
         tasksRecyclerView.setAdapter(taskAdapter);
 
     }
+    public void notifyDataSetChanged(){taskAdapter.notifyDataSetChanged();}
+
+
 }

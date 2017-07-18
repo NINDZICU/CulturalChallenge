@@ -17,6 +17,9 @@ import com.kpfu.itis.culturalchallenge.entities.Task;
  */
 
 public class TaskDetailFragment extends Fragment {
+    private TaskListener mTaskListener;
+
+
     private TextView tvTaskDetail;
     private TextView tvComplexity;
     private TextView tvDateOfEnd;
@@ -37,7 +40,7 @@ public class TaskDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.done, container,false);
+        View view = inflater.inflate(R.layout.done, container, false);
         return view;
     }
 
@@ -58,21 +61,29 @@ public class TaskDetailFragment extends Fragment {
         tvTaskDetail.setText(task.getDescription());
         tvComplexity.setText(task.getDifficulty());
         tvDateOfEnd.setText(task.getDateFinish());
-        tvTextConfirm.setText("Завершить?");
 
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getActivity().getSupportFragmentManager().popBackStack();
             }
         });
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+        btnConfirm.setOnClickListener(v -> {
+            if (mTaskListener != null) {
+                mTaskListener.onTaskClick(task);
             }
         });
+    }
+
+    public void setTextConfirm(String textConfirm){
+        tvTextConfirm.setText(textConfirm);
+    }
+    public void setTaskListener(TaskListener taskListener) {
+        mTaskListener = taskListener;
+    }
 
 
+    public interface TaskListener{
+        void onTaskClick(Task task);
     }
 }

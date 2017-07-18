@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
     private VKAccessToken access_token;
     private TasksRecyclerAdapter taskAdapter;
 
-    public static HomeFragment getInstance(){
+    public static HomeFragment getInstance() {
         return new HomeFragment();
     }
 
@@ -91,6 +91,10 @@ public class HomeFragment extends Fragment {
             taskAdapter = new TasksRecyclerAdapter();
             taskAdapter.setTaskListener(task -> {
                 TaskDetailFragment fragment = new TaskDetailFragment().newInstance(task);
+                fragment.setTaskListener(task1 -> {
+
+                });
+                fragment.setTextConfirm("Завершить?");
                 getChildFragmentManager().beginTransaction()
                         .add(R.id.task_detail_frame, fragment, TaskDetailFragment.class.getName()).commit();
             });
@@ -99,4 +103,9 @@ public class HomeFragment extends Fragment {
             tasksRecyclerView.setAdapter(taskAdapter);
         }
     }
+
+    public void notifyDataSetChanged(){taskAdapter.notifyDataSetChanged();}
+
+
+
 }

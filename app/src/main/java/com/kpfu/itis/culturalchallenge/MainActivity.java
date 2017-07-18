@@ -58,4 +58,9 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
     public void onTabClick(int position, View tab) {
         mTabPager.setCurrentItem(position, true);
     }
+
+    public void notifyDataSetChanged(){
+        HomeFragment.getInstance().notifyDataSetChanged();
+        Fragment2.getInstance().notifyDataSetChanged();
+    }
 }

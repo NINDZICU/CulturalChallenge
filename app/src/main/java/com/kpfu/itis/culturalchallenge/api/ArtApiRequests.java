@@ -31,4 +31,12 @@ public interface ArtApiRequests {
     @GET("tasks/getAll")
     Observable<List<Task>> getAllTasks(@Query("city") String city);
 
+    @POST("tasks/acceptTask")
+    Observable<Integer> acceptTask(@Query("login") String login, @Query("idTask") Integer id);
+
+    @GET("tasks/successTask")
+    Observable<Integer> successTask(@Query("login") String login, @Query("idTask") Integer idTask);
+
+    @GET("tasks/failTask")
+    Observable<Integer> failTask(@Query("login") String login, @Query("idTask") Integer idTask);
 }
