@@ -65,6 +65,7 @@ public class AuthentificationFragment extends Fragment {
             @Override
             public void onResult(VKAccessToken res) {
 // Пользователь успешно авторизовался
+                System.out.println("CCCCCCCCCCCCCSSSSSSSSSSSSSSSSSSUUUUUUUUUUUUUUUCCCCCCCCCCCCEEEEEEEEESSSSSSSSSSSSssss");
                 access_token = res;
                 access_token.saveTokenToSharedPreferences(getActivity().getApplicationContext(), VKAccessToken.ACCESS_TOKEN);
 
@@ -98,6 +99,7 @@ public class AuthentificationFragment extends Fragment {
             @Override
             public void onError(VKError error) {
 // Произошла ошибка авторизации (например, пользователь запретил авторизацию)
+                System.out.println("ERRORR AUTHENTIFFICATION");
                 Toast.makeText(getActivity().getApplicationContext(), "Error authentification", Toast.LENGTH_SHORT).show();
             }
         })) {
