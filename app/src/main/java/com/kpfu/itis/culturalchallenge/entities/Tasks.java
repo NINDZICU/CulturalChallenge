@@ -1,5 +1,8 @@
 package com.kpfu.itis.culturalchallenge.entities;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.Set;
 
@@ -7,28 +10,45 @@ import java.util.Set;
  * Created by Anatoly on 08.07.2017.
  */
 public class Tasks implements Serializable {
-    private Integer id;
+    @SerializedName("id")
+    @Expose
+    private int id;
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("description")
+    @Expose
     private String description;
+    @SerializedName("dateFinish")
+    @Expose
     private String dateFinish;
+    @SerializedName("difficulty")
+    @Expose
     private String difficulty;
-    private String customer;
-
+    @SerializedName("customer")
+    @Expose
+    private User customer;
+    @SerializedName("address")
+    @Expose
     private String address;
+    @SerializedName("latitude")
+    @Expose
     private String latitude;
+    @SerializedName("longitude")
+    @Expose
     private String longitude;
 
-
+    @SerializedName("users")
+    @Expose
     private Set<User> users;
 
     public Tasks(){}
 
-    public Tasks(String name, String description, String dateFinish, String difficulty, String customer) {
+    public Tasks(String name, String description, String dateFinish, String difficulty) {
         this.name = name;
         this.description = description;
         this.dateFinish = dateFinish;
         this.difficulty = difficulty;
-        this.customer = customer;
     }
 
     public Integer getId() {
@@ -71,11 +91,11 @@ public class Tasks implements Serializable {
         this.difficulty = difficulty;
     }
 
-    public String getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
-    public void setCustomer(String customer) {
+    public void setCustomer(User customer) {
         this.customer = customer;
     }
 
@@ -109,5 +129,9 @@ public class Tasks implements Serializable {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

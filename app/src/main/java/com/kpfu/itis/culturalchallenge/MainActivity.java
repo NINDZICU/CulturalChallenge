@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.kpfu.itis.culturalchallenge.adapters.TabPagerAdapter;
+import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
 import com.kpfu.itis.culturalchallenge.fragments.Fragment2;
 import com.kpfu.itis.culturalchallenge.fragments.Fragment3;
 import com.kpfu.itis.culturalchallenge.fragments.Fragment4;
 import com.kpfu.itis.culturalchallenge.fragments.HomeFragment;
-
+import com.kpfu.itis.culturalchallenge.service.ApiService;
+import com.vk.sdk.VKAccessToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
     ViewPager mTabPager;
     @BindView(R.id.tabs)
     LinearLayout mTabLayout;
+    private TasksRecyclerAdapter taskAdapter;
     private TabViewWrapper mTabViewWrapper;
     private TabPagerAdapter mTabPagerAdapter;
 
@@ -49,10 +52,15 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
         mTabPagerAdapter.setFragmentList(tabFragment);
         mTabPager.setAdapter(mTabPagerAdapter);
 
-    }
+        }
 
     @Override
     public void onTabClick(int position, View tab) {
         mTabPager.setCurrentItem(position, true);
+    }
+
+    public void notifyDataSetChanged(){
+        HomeFragment.getInstance().notifyDataSetChanged();
+        Fragment2.getInstance().notifyDataSetChanged();
     }
 }

@@ -83,9 +83,6 @@ public class AuthentificationFragment extends Fragment {
                         for (int i = 0; i < list.size(); i++) {
                             try {
                                 System.out.println("ID " + list.get(i).fields.get("id"));
-                                System.out.println("name "+list.get(i).fields.toString());
-                                System.out.println("name "+list.get(i).fields.get("first_name"));
-                                System.out.println("name "+list.get(i).fields.get("last_name"));
                                 String vkID = list.get(i).fields.get("id").toString();
                                 SharedPreferencesProvider.getInstance(getContext()).saveVkId(vkID);
                             } catch (JSONException e) {

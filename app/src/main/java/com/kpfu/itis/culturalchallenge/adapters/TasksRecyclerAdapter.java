@@ -16,17 +16,18 @@ import java.util.List;
  * Created by Anatoly on 11.07.2017.
  */
 
-public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdapter.TasksViewHolder> {
+public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdapter.TasksViewHolder>{
     private List<Task> mTasks;
     private TaskListener mTaskListener;
 
-    public TasksRecyclerAdapter() {
+    public TasksRecyclerAdapter(){
         mTasks = Collections.emptyList();
     }
 
     public void setTaskListener(TaskListener taskListener) {
         mTaskListener = taskListener;
     }
+
 
     @Override
     public TasksViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -48,7 +49,7 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
         return mTasks.size();
     }
 
-    public class TasksViewHolder extends RecyclerView.ViewHolder {
+    public class TasksViewHolder extends RecyclerView.ViewHolder{
         TextView tvCustomer;
         TextView tvTask;
         TextView tvDeadline;
@@ -61,8 +62,8 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
             tvDeadline = (TextView) itemView.findViewById(R.id.tv_deadline);
         }
 
-        void bind(Task task) {
-            tvCustomer.setText(task.getCustomer());
+        void bind(Task task){
+            tvCustomer.setText(task.getCustomer().getName());
             tvTask.setText(task.getName());
             tvDeadline.setText(task.getDateFinish());
             itemView.setOnClickListener(v -> {
@@ -73,7 +74,7 @@ public class TasksRecyclerAdapter extends RecyclerView.Adapter<TasksRecyclerAdap
         }
     }
 
-    public interface TaskListener {
+    public interface TaskListener{
         void onTaskClick(Task task);
     }
 

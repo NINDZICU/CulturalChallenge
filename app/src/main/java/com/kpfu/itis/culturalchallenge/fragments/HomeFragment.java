@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
     private VKAccessToken access_token;
     private TasksRecyclerAdapter taskAdapter;
 
-    public static HomeFragment getInstance(){
+    public static HomeFragment getInstance() {
         return new HomeFragment();
     }
 
@@ -75,7 +75,6 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onError(VKError error) {
                     super.onError(error);
-                    System.out.println("ERRROORORORR " + error.errorMessage);
                 }
 
                 @Override
@@ -90,12 +89,26 @@ public class HomeFragment extends Fragment {
             taskAdapter = new TasksRecyclerAdapter();
             taskAdapter.setTaskListener(task -> {
                 TaskDetailFragment fragment = new TaskDetailFragment().newInstance(task);
+                fragment.setTaskListener(task1 -> {
+
+                });
+                fragment.setTaskListenerDone(task1 -> {
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                });
                 getChildFragmentManager().beginTransaction()
                         .add(R.id.task_detail_frame, fragment, TaskDetailFragment.class.getName()).commit();
+                fragment.setTextConfirm("Завершить?");
             });
+
             List<Task> mTasks = apiService.getMyTasks(SharedPreferencesProvider.getInstance(getContext().getApplicationContext()).getVkId(), taskAdapter);
             tasksRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             tasksRecyclerView.setAdapter(taskAdapter);
         }
     }
+
+    public void notifyDataSetChanged() {
+        if (taskAdapter != null) taskAdapter.notifyDataSetChanged();
+    }
+
+
 }
