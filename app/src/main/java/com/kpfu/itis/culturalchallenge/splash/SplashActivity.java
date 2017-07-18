@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 try {
                     for (cnt = 1; cnt < max; cnt = cnt + 2) {
-                        TimeUnit.MILLISECONDS.sleep(200);
+                        TimeUnit.MILLISECONDS.sleep(100);
                         // обновляем ProgressBar
                         h.post(updateProgress);
                     }
