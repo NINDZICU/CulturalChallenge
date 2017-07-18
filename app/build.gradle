@@ -33,7 +33,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':vksdk_library')
-
     compile('com.squareup.retrofit2:converter-simplexml:2.3.0') {
         exclude group: 'stax', module: 'stax-api'
         exclude group: 'stax', module: 'stax'

@@ -18,6 +18,7 @@ import com.kpfu.itis.culturalchallenge.providers.SharedPreferencesProvider;
 import com.kpfu.itis.culturalchallenge.service.ApiService;
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKSdk;
+import com.vk.sdk.VKUIHelper;
 import com.vk.sdk.api.VKApi;
 import com.vk.sdk.api.VKApiConst;
 import com.vk.sdk.api.VKError;
@@ -63,13 +64,12 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        access_token = VKAccessToken.tokenFromSharedPreferences(getContext(), VKAccessToken.ACCESS_TOKEN);
         if (!VKSdk.isLoggedIn()) {
             AuthentificationFragment fragment = new AuthentificationFragment();
             getChildFragmentManager().beginTransaction()
                     .replace(R.id.task_detail_frame, fragment, AuthentificationFragment.class.getName()).commit();
         } else {
-            System.out.println(access_token.accessToken);
+            access_token = VKAccessToken.tokenFromSharedPreferences(getActivity(), VKAccessToken.ACCESS_TOKEN);
             final VKRequest request = VKApi.friends().getAppUsers(VKParameters.from(VKApiConst.ACCESS_TOKEN, access_token.accessToken));
             request.executeWithListener(new VKRequest.VKRequestListener() {
                 @Override

@@ -51,15 +51,31 @@ public class MainActivity extends AppCompatActivity implements TabViewWrapper.Ta
         tabFragment.add(Fragment4.getInstance());
         mTabPagerAdapter.setFragmentList(tabFragment);
         mTabPager.setAdapter(mTabPagerAdapter);
+        mTabPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-        }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mTabViewWrapper.setSelectedTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+    }
 
     @Override
     public void onTabClick(int position, View tab) {
         mTabPager.setCurrentItem(position, true);
     }
 
-    public void notifyDataSetChanged(){
+    public void notifyDataSetChanged() {
         HomeFragment.getInstance().notifyDataSetChanged();
         Fragment2.getInstance().notifyDataSetChanged();
     }
