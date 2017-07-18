@@ -17,6 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class GeocodeApi {
 
+    private static final String COUNTRY=" Россия";
     private static final String API_KEY = "AIzaSyBeKQHjAxJcITvnJK0Tg5Pr9iLkEJnp_4I";
     private static final String BASE_URL = "https://maps.googleapis.com/maps/api/geocode/";
     private GeocodeRequest mGeocodeRequest;
@@ -32,6 +33,8 @@ public class GeocodeApi {
     }
 
     public Observable<Location> getCoordinatesByAddress(String request){
+        request+=COUNTRY;
+        request=request.trim().replaceAll(" ","+");
         Observable<GeocodeResponse> geocodeResponseObservable
                 =mGeocodeRequest.getGeocode(request,API_KEY);
         return geocodeResponseObservable.flatMap(
@@ -56,10 +59,6 @@ public class GeocodeApi {
                     }
                 })
         );
-    }
-
-    public Observable<Location> getCoordinatesByAddress(GeocodeRequestBuilder request){
-        return getCoordinatesByAddress(request.build());
     }
 
 }
