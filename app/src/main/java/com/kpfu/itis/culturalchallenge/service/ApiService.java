@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
-import com.kpfu.itis.culturalchallenge.api.ArtApi;
+import com.kpfu.itis.culturalchallenge.api.art.ArtApi;
 import com.kpfu.itis.culturalchallenge.entities.Task;
 import com.kpfu.itis.culturalchallenge.entities.Tasks;
 

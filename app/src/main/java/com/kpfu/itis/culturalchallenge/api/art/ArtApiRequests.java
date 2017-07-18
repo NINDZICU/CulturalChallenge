@@ -1,4 +1,4 @@
-package com.kpfu.itis.culturalchallenge.api;
+package com.kpfu.itis.culturalchallenge.api.art;
 
 import com.kpfu.itis.culturalchallenge.entities.Task;
 import com.kpfu.itis.culturalchallenge.entities.User;

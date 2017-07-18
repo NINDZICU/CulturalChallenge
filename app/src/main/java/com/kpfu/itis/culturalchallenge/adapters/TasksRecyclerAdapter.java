@@ -1,6 +1,5 @@
 package com.kpfu.itis.culturalchallenge.adapters;
 
-import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +8,7 @@ import android.widget.TextView;
 
 import com.kpfu.itis.culturalchallenge.R;
 import com.kpfu.itis.culturalchallenge.entities.Task;
-import com.kpfu.itis.culturalchallenge.fragments.TaskDetailFragment;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
