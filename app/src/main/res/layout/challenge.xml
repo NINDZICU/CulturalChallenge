@@ -1,55 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-condensed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:gravity="right"
-            android:textColor="@color/colorText"
-            android:text="@string/level"/>
+            android:text="@string/level"
+            android:textColor="@color/colorText" />
+
         <TextView
-            android:layout_weight="5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="5"
             android:gravity="right"
-            android:textColor="@color/colorText"
-            />
+            android:textColor="@color/colorText" />
 
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
-        android:fontFamily="sans-serif-condensed"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
         android:gravity="center"
-        android:textColor="@color/colorText"
-        android:textStyle="bold"
         android:textAllCaps="true"
+        android:textColor="@color/colorText"
         android:textSize="18sp"
-        />
+        android:textStyle="bold" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/samorazvitiye"
         android:layout_gravity="center"
+        android:layout_marginTop="5dp"
         android:alpha="0.8"
+        android:src="@drawable/samorazvitiye"
 
         />
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,28 +61,81 @@
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_margin="7dp"
+                app:cardBackgroundColor="@color/colorBack"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp">
+
+                    <TextView
+                        android:id="@+id/name_new_task"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:textColorHint="@color/colorText"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_margin="7dp"
+                app:cardBackgroundColor="@color/colorBack"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/city_new_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColorHint="@color/colorText"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_margin="7dp"
+                app:cardBackgroundColor="@color/colorBack"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/address_new_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColorHint="@color/colorText"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_margin="7dp"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="4dp"
                 app:cardBackgroundColor="@color/colorBack"
-                >
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp">
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColorHint="@color/colorText"
-                        android:textStyle="bold"
-                        android:fontFamily="sans-serif-condensed"
-                        android:textSize="15sp"
-                        android:layout_margin="10dp"
-                        android:hint="@string/your_task"
-                        />
+                        <TextView
+                            android:id="@+id/text_new_task"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:hint="@string/your_task"
+                            android:textColorHint="@color/colorText"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                 </ScrollView>
 
             </android.support.v7.widget.CardView>
@@ -86,16 +143,14 @@
             <Button
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_profile"
-                android:fontFamily="sans-serif-condensed"
-                android:alpha="0.6"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
+                android:alpha="0.6"
+                android:background="@drawable/btn_profile"
+                android:fontFamily="sans-serif-condensed"
                 android:text="@string/send"
-                android:textColor="@color/colorTextWhite"
                 android:textAllCaps="true"
-                />
-
+                android:textColor="@color/colorTextWhite" />
 
 
         </LinearLayout>

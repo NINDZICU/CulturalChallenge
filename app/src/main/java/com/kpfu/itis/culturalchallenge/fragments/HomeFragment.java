@@ -92,10 +92,11 @@ public class HomeFragment extends Fragment {
                 fragment.setTaskListener(task1 -> {
 
                 });
-                fragment.setTextConfirm("Завершить?");
                 getChildFragmentManager().beginTransaction()
                         .add(R.id.task_detail_frame, fragment, TaskDetailFragment.class.getName()).commit();
+                fragment.setTextConfirm("Завершить?");
             });
+
             List<Task> mTasks = apiService.getMyTasks(SharedPreferencesProvider.getInstance(getContext().getApplicationContext()).getVkId(), taskAdapter);
             tasksRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             tasksRecyclerView.setAdapter(taskAdapter);

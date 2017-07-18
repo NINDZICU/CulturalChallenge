@@ -72,9 +72,9 @@ public class AuthentificationActivity extends AppCompatActivity {
                                 String vkID = list.get(i).fields.get("id").toString();
                                 SharedPreferencesProvider.getInstance(AuthentificationActivity.this).saveVkId(vkID);
                                 SharedPreferencesProvider.getInstance(AuthentificationActivity.this)
-                                        .saveVkName(list.get(i).fields.get("first_name").toString()+list.get(i).fields.get("last_name"));
+                                        .saveVkName(list.get(i).fields.get("first_name").toString()+" "+list.get(i).fields.get("last_name"));
                                 apiService = new ApiService(getApplicationContext());
-                                apiService.saveUser(vkID, list.get(i).fields.get("first_name").toString()+list.get(i).fields.get("last_name"), "kazan" );
+                                apiService.saveUser(vkID, list.get(i).fields.get("first_name").toString()+" "+list.get(i).fields.get("last_name"), "kazan" );
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

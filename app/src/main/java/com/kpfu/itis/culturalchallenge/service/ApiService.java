@@ -7,6 +7,7 @@ import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
 import com.kpfu.itis.culturalchallenge.api.art.ArtApi;
 import com.kpfu.itis.culturalchallenge.entities.Task;
 import com.kpfu.itis.culturalchallenge.entities.Tasks;
+import com.kpfu.itis.culturalchallenge.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +34,11 @@ public class ApiService {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(tasks -> {
                     adapter.setTasks(tasks);
-                }, throwable ->
-                        Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show());
+                }, throwable -> {
+                    Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    System.out.println("getMYTASKS " + throwable.getMessage());
+                });
+
         return mTasks;
     }
 
@@ -54,8 +58,19 @@ public class ApiService {
                     adapter.setTasks(tasks);
                 }, throwable -> {
                     Toast.makeText(context, "Throw ALLTasks" + throwable.getMessage(), Toast.LENGTH_LONG).show();
+                    System.out.println("getAllTasks "+throwable.getMessage());
+
                 });
         return mTasks;
+    }
+
+    public void addTask(String address, String login,  String dateFinish, String name, String description,
+                        String difficulty, String city){
+        artApi.addTask(address, login,  dateFinish, name, description, difficulty, city).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(code -> {
+                }, throwable ->
+                        Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     public void acceptTask(String login, Integer idTask) {
@@ -81,4 +96,6 @@ public class ApiService {
                 }, throwable ->
                         Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show());
     }
+
+
 }

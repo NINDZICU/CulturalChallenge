@@ -28,6 +28,8 @@ public class TaskDetailFragment extends Fragment {
     private ImageButton btnDone;
     private ImageButton btnConfirm;
 
+    private String textConfirm = "";
+
     public static TaskDetailFragment newInstance(Task task) {
 
         Bundle args = new Bundle();
@@ -58,6 +60,7 @@ public class TaskDetailFragment extends Fragment {
         btnConfirm = (ImageButton) view.findViewById(R.id.imageButton_confirm);
 
         tvCustomer.setText(task.getCustomer().getName());
+        tvTextConfirm.setText(textConfirm);
         tvTaskDetail.setText(task.getDescription());
         tvComplexity.setText(task.getDifficulty());
         tvDateOfEnd.setText(task.getDateFinish());
@@ -76,8 +79,8 @@ public class TaskDetailFragment extends Fragment {
     }
 
     public void setTextConfirm(String textConfirm){
-        tvTextConfirm.setText(textConfirm);
-    }
+        this.textConfirm = textConfirm;
+}
     public void setTaskListener(TaskListener taskListener) {
         mTaskListener = taskListener;
     }

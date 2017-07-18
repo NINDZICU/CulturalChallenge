@@ -7,7 +7,6 @@ import java.util.Set;
  * Created by Anatoly on 08.07.2017.
  */
 public class User {
-    private Integer id;
     private String login;
     private String password;
     private String name;
@@ -17,17 +16,10 @@ public class User {
     private Set<MyTasks> myTasks;
     private Set<Tasks> tasks = new HashSet<>();
     private Set<User> friends;
+    private Set<Authority> authorities;
 
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    
     public String getName() {
         return name;
     }
@@ -100,4 +92,11 @@ public class User {
         this.friends = friends;
     }
 
+    public Set<Authority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
+    }
 }
