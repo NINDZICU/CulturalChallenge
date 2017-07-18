@@ -36,7 +36,9 @@ public class GeocodeApi {
                 geocodeResponse -> Observable.<Location>create(e -> {
                     if(geocodeResponse.getStatus().equals("OK")){
                         if(geocodeResponse.getResults().isEmpty()){
-                            e.onNext(null);
+                            Location location=new Location();
+                            location.setExist(false);
+                            e.onNext(location);
                         }else {
                             for (Result result : geocodeResponse.getResults()) {
                                 e.onNext(result.getGeometry().getLocation());
@@ -44,7 +46,9 @@ public class GeocodeApi {
                         }
                         e.onComplete();
                     }else{
-                        e.onNext(null);
+                        Location location=new Location();
+                        location.setExist(false);
+                        e.onNext(location);
                     }
                 })
         );
