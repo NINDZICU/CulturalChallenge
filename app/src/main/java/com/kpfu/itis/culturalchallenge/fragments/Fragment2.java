@@ -47,6 +47,7 @@ public class Fragment2 extends Fragment {
 
     private ApiService apiService;
     private TasksRecyclerAdapter taskAdapter;
+    private UpdateData mUpdateData;
 
     @Nullable
     @Override
@@ -66,7 +67,8 @@ public class Fragment2 extends Fragment {
             TaskDetailFragment fragment = new TaskDetailFragment().newInstance(task);
             fragment.setTaskListener(task1 -> {
                 apiService.acceptTask(SharedPreferencesProvider.getInstance(getContext()).getVkId(), task1.getId());
-                ((MainActivity) getActivity()).notifyDataSetChanged();
+                notifyDataSetChanged();
+                if(mUpdateData!=null) mUpdateData.updateData();
                 getActivity().getSupportFragmentManager().beginTransaction().remove(fragment).commit();
             });
             fragment.setTaskListenerDone(task1 -> {
@@ -85,6 +87,14 @@ public class Fragment2 extends Fragment {
     public void notifyDataSetChanged() {
         apiService.getAllTasksAndr("kazan", SharedPreferencesProvider.getInstance(getContext()).getVkId(), taskAdapter);
 
+    }
+
+    public void setUpdateData(UpdateData updateData) {
+        mUpdateData = updateData;
+    }
+
+    public interface UpdateData{
+        void updateData();
     }
 
 
