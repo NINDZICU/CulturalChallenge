@@ -92,6 +92,9 @@ public class HomeFragment extends Fragment {
                 fragment.setTaskListener(task1 -> {
 
                 });
+                fragment.setTaskListenerDone(task1 -> {
+                    getActivity().getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                });
                 getChildFragmentManager().beginTransaction()
                         .add(R.id.task_detail_frame, fragment, TaskDetailFragment.class.getName()).commit();
                 fragment.setTextConfirm("Завершить?");

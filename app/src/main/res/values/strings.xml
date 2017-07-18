@@ -30,7 +30,12 @@
     <string name="challenge">Вы готовы принять вызов?</string>
     <string name="done">Завершить?</string>
     <string name="art">Art Call</string>
+    <string name="your_city">Введите город</string>
+    <string name="your_address">Введите адрес</string>
+    <string name="name_task">Введите название</string>
     <integer name="com_vk_sdk_AppId">6109909</integer>
+    <string name="choose_date">Выберите дату</string>
+    <string name="ready">Готово</string>
 
 
 </resources>

@@ -67,7 +67,7 @@
                 app:cardCornerRadius="6dp"
                 app:cardElevation="4dp">
 
-                    <TextView
+                    <EditText
                         android:id="@+id/name_new_task"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -75,7 +75,8 @@
                         android:fontFamily="sans-serif-condensed"
                         android:textColorHint="@color/colorText"
                         android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:hint="@string/name_task"/>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -85,7 +86,7 @@
                 app:cardCornerRadius="6dp"
                 app:cardElevation="4dp">
 
-                <TextView
+                <EditText
                     android:id="@+id/city_new_task"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -93,7 +94,8 @@
                     android:fontFamily="sans-serif-condensed"
                     android:textColorHint="@color/colorText"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:hint="@string/your_city"/>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -103,15 +105,16 @@
                 app:cardCornerRadius="6dp"
                 app:cardElevation="4dp">
 
-                <TextView
+                <EditText
                     android:id="@+id/address_new_task"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:fontFamily="sans-serif-condensed"
                     android:textColorHint="@color/colorText"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:textSize="40dp"
+                    android:textStyle="bold"
+                    android:hint="@string/your_address"/>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -126,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                        <TextView
+                        <EditText
                             android:id="@+id/text_new_task"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -141,6 +144,53 @@
             </android.support.v7.widget.CardView>
 
             <Button
+                android:id="@+id/btn_date_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Выберите дату окончания задания"/>
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            <RadioButton
+                android:id="@+id/radio_easy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Easy"
+                android:layout_weight="1"
+                android:checked="true" />
+                <RadioButton
+                    android:id="@+id/radio_middle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Middle"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/radio_hard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hard"
+                    android:layout_weight="1" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:onClick="onclick"
+                android:text="@string/hello"
+                android:textSize="22sp">
+            </TextView>
+
+            <Button
+                android:id="@+id/btn_send_task"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -151,7 +201,6 @@
                 android:text="@string/send"
                 android:textAllCaps="true"
                 android:textColor="@color/colorTextWhite" />
-
 
         </LinearLayout>
     </ScrollView>

@@ -81,7 +81,9 @@ public class Fragment4 extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                NewTaskFragment fragment = new NewTaskFragment().newInstance();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .add(R.id.add_task_frame, fragment, TaskDetailFragment.class.getName()).commit();
             }
         });
     }

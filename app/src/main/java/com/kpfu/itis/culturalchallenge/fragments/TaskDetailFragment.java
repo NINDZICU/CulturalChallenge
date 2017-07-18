@@ -18,6 +18,7 @@ import com.kpfu.itis.culturalchallenge.entities.Task;
 
 public class TaskDetailFragment extends Fragment {
     private TaskListener mTaskListener;
+    private TaskListener mTaskListenerDone;
 
 
     private TextView tvTaskDetail;
@@ -65,10 +66,10 @@ public class TaskDetailFragment extends Fragment {
         tvComplexity.setText(task.getDifficulty());
         tvDateOfEnd.setText(task.getDateFinish());
 
-        btnDone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().popBackStack();
+        btnDone.setOnClickListener(v-> {
+            if(mTaskListenerDone != null){
+                getActivity().getSupportFragmentManager().beginTransaction().remove(TaskDetailFragment.this).commit();
+//                mTaskListenerDone.onTaskClick(task);
             }
         });
         btnConfirm.setOnClickListener(v -> {
@@ -83,6 +84,10 @@ public class TaskDetailFragment extends Fragment {
 }
     public void setTaskListener(TaskListener taskListener) {
         mTaskListener = taskListener;
+    }
+
+    public void setTaskListenerDone(TaskListener taskListenerDone) {
+        mTaskListenerDone = taskListenerDone;
     }
 
 
