@@ -113,7 +113,7 @@ public class HomeFragment extends Fragment {
                                     }else{
 
                                     }
-                                },throwable -> {},()->mProgressDialog.dismiss());
+                                },throwable -> {if(mProgressDialog!=null)mProgressDialog.dismiss();},()->{if(mProgressDialog!=null)mProgressDialog.dismiss();});
                     } catch (Exception e) {
                         e.printStackTrace();
                         if(mProgressDialog!=null)mProgressDialog.dismiss();

@@ -84,8 +84,10 @@ public class ConfirmTask {
                                     );
                                     if(dist[0]<CONFIRM_DISTANCE_METER){
                                         e.onNext(true);
+                                        e.onComplete();
                                     }else{
                                         e.onNext(false);
+                                        e.onComplete();
                                     }
                                 }, Looper.getMainLooper());
                     } else {
@@ -98,7 +100,6 @@ public class ConfirmTask {
                 if(mGoogleApiClient.isConnected()){
                     mGoogleApiClient.disconnect();
                 }
-                e.onComplete();
             }
         })).take(1);
     }
