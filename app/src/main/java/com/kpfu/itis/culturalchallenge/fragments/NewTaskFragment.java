@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.kpfu.itis.culturalchallenge.R;
 import com.kpfu.itis.culturalchallenge.providers.SharedPreferencesProvider;
 import com.kpfu.itis.culturalchallenge.service.ApiService;
+import com.kpfu.itis.culturalchallenge.util.ConfirmTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,6 +41,7 @@ public class NewTaskFragment extends Fragment {
     @BindView(R.id.radio_group)
     RadioGroup radioGroup;
 
+    private ConfirmTask confirmTask;
     private String date="";
 
     public static NewTaskFragment newInstance() {
