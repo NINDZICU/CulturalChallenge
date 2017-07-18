@@ -64,6 +64,20 @@ public class ApiService {
         return mTasks;
     }
 
+    public List<Task> getAllTasksAndr(String city, String login, TasksRecyclerAdapter adapter) {
+        List<Task> mTasks = new ArrayList<>();
+        artApi.getAllTasksAndr(city, login).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(tasks -> {
+                    adapter.setTasks(tasks);
+                }, throwable -> {
+                    Toast.makeText(context, "Throw ALLTasks" + throwable.getMessage(), Toast.LENGTH_LONG).show();
+                    System.out.println("getAllTasks "+throwable.getMessage());
+
+                });
+        return mTasks;
+    }
+
     public void addTask(String address, String login,  String dateFinish, String name, String description,
                         String difficulty, String city){
         artApi.addTask(address, login,  dateFinish, name, description, difficulty, city).subscribeOn(Schedulers.io())

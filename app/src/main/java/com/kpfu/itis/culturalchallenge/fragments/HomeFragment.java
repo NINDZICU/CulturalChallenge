@@ -106,8 +106,9 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    public void notifyDataSetChanged(){taskAdapter.notifyDataSetChanged();}
-
+    public void notifyDataSetChanged() {
+        if (taskAdapter != null) taskAdapter.notifyDataSetChanged();
+    }
 
 
 }
