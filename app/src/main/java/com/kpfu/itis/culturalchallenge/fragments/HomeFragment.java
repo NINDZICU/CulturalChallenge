@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment {
                     try {
                         mProgressDialog=ProgressDialog.show(getContext(),getContext().getString(R.string.confirm_address)
                                 ,getContext().getString(R.string.loading),true,false);
-                        mConfirmTask.confirm(task1.getAddress()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                        mConfirmTask.confirm(task1.getAddress()).observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(confirm->{
                                     if(confirm){
                                         apiService.successTask(SharedPreferencesProvider.getInstance(getContext()).getVkId(),

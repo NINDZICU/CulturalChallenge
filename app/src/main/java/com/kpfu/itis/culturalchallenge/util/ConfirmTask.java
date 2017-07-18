@@ -16,6 +16,8 @@ import com.kpfu.itis.culturalchallenge.api.geocode.GeocodeApi;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Rage on 18.07.2017.
@@ -63,7 +65,7 @@ public class ConfirmTask {
         if(!checkGps()){
             throw new Exception("GPS is not enabled!");
         }
-        return mGeocodeApi.getCoordinatesByAddress(taskAddress).flatMap(location -> Observable.<Boolean>create(e -> {
+        return mGeocodeApi.getCoordinatesByAddress(taskAddress).subscribeOn(Schedulers.io()).flatMap(location -> Observable.<Boolean>create(e -> {
             try {
                 if (checkPermission()) {
                     ConnectionResult connectionResult = mGoogleApiClient.blockingConnect(30, TimeUnit.SECONDS);
@@ -97,7 +99,7 @@ public class ConfirmTask {
                 }
                 e.onComplete();
             }
-        })).take(1);
+        })).subscribeOn(AndroidSchedulers.mainThread()).take(1);
     }
 
     private boolean checkPermission() {
