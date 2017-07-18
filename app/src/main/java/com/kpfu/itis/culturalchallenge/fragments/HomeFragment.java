@@ -116,7 +116,7 @@ public class HomeFragment extends Fragment {
                                     }else{
                                         Toast.makeText(getContext(), "Вы не находитесь в нужном месте", Toast.LENGTH_LONG).show();
                                     }
-                                },throwable -> {},()->mProgressDialog.dismiss());
+                                },throwable -> {if(mProgressDialog!=null)mProgressDialog.dismiss();},()->{if(mProgressDialog!=null)mProgressDialog.dismiss();});
                     } catch (Exception e) {
                         e.printStackTrace();
                         if(mProgressDialog!=null)mProgressDialog.dismiss();
