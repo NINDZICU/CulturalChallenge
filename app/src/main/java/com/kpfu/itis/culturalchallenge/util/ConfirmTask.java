@@ -36,7 +36,7 @@ public class ConfirmTask {
                 .build();
     }
 
-    private Observable<Boolean> confirm(String taskAddress) throws Exception {
+    public Observable<Boolean> confirm(String taskAddress) throws Exception {
         LocationManager locationManager=(LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
         if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
             throw new Exception("GPS is not enabled!");
@@ -75,7 +75,7 @@ public class ConfirmTask {
                 }
                 e.onComplete();
             }
-        }));
+        })).take(1);
     }
 
     private boolean checkPermission() {

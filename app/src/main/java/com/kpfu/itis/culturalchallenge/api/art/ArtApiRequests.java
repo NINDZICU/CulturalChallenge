@@ -14,7 +14,7 @@ import retrofit2.http.Query;
  * Created by Rage on 12.07.2017.
  */
 
-public interface ArtApiRequests {
+public interface    ArtApiRequests {
 
     @GET("tasks/get")
     Observable<List<Task>> getAllTasks();
