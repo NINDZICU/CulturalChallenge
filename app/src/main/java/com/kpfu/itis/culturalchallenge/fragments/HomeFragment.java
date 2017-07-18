@@ -48,8 +48,8 @@ public class HomeFragment extends Fragment {
 
     @BindView(R.id.text_of_fact)
     TextView textOfFact;
-    @BindView(R.id.task_for_today)
-    TextView taskForToday;
+//    @BindView(R.id.task_for_today)
+//    TextView taskForToday;
     @BindView(R.id.tasks_recycler_view)
     RecyclerView tasksRecyclerView;
 
@@ -109,9 +109,10 @@ public class HomeFragment extends Fragment {
                         mConfirmTask.confirm(task1.getAddress()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(confirm->{
                                     if(confirm){
-
+                                        apiService.successTask(SharedPreferencesProvider.getInstance(getContext()).getVkId(),
+                                               task1.getId() );
                                     }else{
-
+                                        Toast.makeText(getContext(), "Вы не находитесь в нужном месте", Toast.LENGTH_LONG).show();
                                     }
                                 },throwable -> {},()->mProgressDialog.dismiss());
                     } catch (Exception e) {

@@ -92,7 +92,8 @@ public class NewTaskFragment extends Fragment {
                             if (exist) {
                                 apiService.addTask(tvAddressTask.getText().toString(), SharedPreferencesProvider.getInstance(getContext()).getVkId(),
                                         date, tvNameTask.getText().toString(), tvTextTask.getText().toString(), difficulty,
-                                        tvCityTask.getText().toString());
+                                        "kazan");
+//                                        tvCityTask.getText().toString());
                                 getActivity().getSupportFragmentManager().beginTransaction().remove(NewTaskFragment.this).commit();
                             }else{
                                 Toast.makeText(getContext(),getContext().getString(R.string.address_not_exist),Toast.LENGTH_SHORT).show();
@@ -103,6 +104,9 @@ public class NewTaskFragment extends Fragment {
                             }
                         });
 
+            }
+            else{
+                Toast.makeText(getContext(), "поля не заполнены", Toast.LENGTH_SHORT).show();
             }
         });
 
