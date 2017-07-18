@@ -23,6 +23,8 @@
         <activity
             android:name=".splash.SplashActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".fragments.AuthentificationActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.vk.sdk.VKServiceActivity"
             android:label="ServiceActivity"

@@ -52,6 +52,7 @@ public class AuthentificationActivity extends AppCompatActivity {
             @Override
             public void onResult(VKAccessToken res) {
 // Пользователь успешно авторизовался
+                System.out.println("SUCUCUCEESSSSSSSSSSSSSSSSSSSS");
                 access_token = res;
                 access_token.saveTokenToSharedPreferences(getApplicationContext(), VKAccessToken.ACCESS_TOKEN);
 
@@ -88,6 +89,7 @@ public class AuthentificationActivity extends AppCompatActivity {
             @Override
             public void onError(VKError error) {
 // Произошла ошибка авторизации (например, пользователь запретил авторизацию)
+                System.out.println("ERRRRRROROROOR SUCUCUEUUEUSU");
                 Toast.makeText(getApplicationContext(), "Error authentification", Toast.LENGTH_SHORT).show();
             }
         })) {

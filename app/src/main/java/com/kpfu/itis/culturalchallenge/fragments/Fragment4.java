@@ -72,7 +72,7 @@ public class Fragment4 extends Fragment {
                     }
 
                 }, throwable ->{
-                        Toast.makeText(getContext(), "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
         System.out.println("getUSer "+throwable.getMessage());
                         });
 
