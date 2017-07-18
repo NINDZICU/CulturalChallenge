@@ -13,6 +13,7 @@ import com.kpfu.itis.culturalchallenge.MainActivity;
 import com.kpfu.itis.culturalchallenge.R;
 import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
 import com.kpfu.itis.culturalchallenge.entities.Task;
+import com.kpfu.itis.culturalchallenge.entities.Tasks;
 import com.kpfu.itis.culturalchallenge.providers.SharedPreferencesProvider;
 import com.kpfu.itis.culturalchallenge.service.ApiService;
 import com.vk.sdk.VKAccessToken;
@@ -82,7 +83,8 @@ public class Fragment2 extends Fragment {
     }
 
     public void notifyDataSetChanged() {
-        if (taskAdapter != null) taskAdapter.notifyDataSetChanged();
+        apiService.getAllTasksAndr("kazan", SharedPreferencesProvider.getInstance(getContext()).getVkId(), taskAdapter);
+
     }
 
 

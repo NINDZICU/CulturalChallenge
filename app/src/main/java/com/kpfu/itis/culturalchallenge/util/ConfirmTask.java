@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -35,7 +36,11 @@ public class ConfirmTask {
                 .build();
     }
 
-    private Observable<Boolean> confirm(String taskAddress) {
+    private Observable<Boolean> confirm(String taskAddress) throws Exception {
+        LocationManager locationManager=(LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
+        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            throw new Exception("GPS is not enabled!");
+        }
         return mGeocodeApi.getCoordinatesByAddress(taskAddress).flatMap(location -> Observable.<Boolean>create(e -> {
             try {
                 if (checkPermission()) {

@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void notifyDataSetChanged() {
-        if (taskAdapter != null) taskAdapter.notifyDataSetChanged();
+        apiService.getMyTasks(SharedPreferencesProvider.getInstance(getContext()).getVkId(), taskAdapter);
     }
 
 
