@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Looper;
 import android.support.v4.app.ActivityCompat;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -65,10 +66,10 @@ public class ConfirmTask {
         if(!checkGps()){
             throw new Exception("GPS is not enabled!");
         }
-        return mGeocodeApi.getCoordinatesByAddress(taskAddress).subscribeOn(Schedulers.io()).flatMap(location -> Observable.<Boolean>create(e -> {
+        return mGeocodeApi.getCoordinatesByAddress(taskAddress).flatMap(location -> Observable.<Boolean>create(e -> {
             try {
                 if (checkPermission()) {
-                    ConnectionResult connectionResult = mGoogleApiClient.blockingConnect(30, TimeUnit.SECONDS);
+                    ConnectionResult connectionResult = mGoogleApiClient.blockingConnect();
                     if (connectionResult.isSuccess()) {
                         LocationRequest locationRequest = new LocationRequest();
                         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -86,7 +87,7 @@ public class ConfirmTask {
                                     }else{
                                         e.onNext(false);
                                     }
-                                });
+                                }, Looper.getMainLooper());
                     } else {
                         e.onError(new Exception("GoogleApiService connect failed!"));
                     }
@@ -99,7 +100,7 @@ public class ConfirmTask {
                 }
                 e.onComplete();
             }
-        })).subscribeOn(AndroidSchedulers.mainThread()).take(1);
+        })).take(1);
     }
 
     private boolean checkPermission() {
