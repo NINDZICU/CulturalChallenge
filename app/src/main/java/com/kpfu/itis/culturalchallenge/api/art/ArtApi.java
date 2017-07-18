@@ -1,4 +1,4 @@
-package com.kpfu.itis.culturalchallenge.api;
+package com.kpfu.itis.culturalchallenge.api.art;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.kpfu.itis.culturalchallenge.entities.Task;
