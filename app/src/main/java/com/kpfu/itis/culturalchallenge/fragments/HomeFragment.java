@@ -1,5 +1,6 @@
 package com.kpfu.itis.culturalchallenge.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kpfu.itis.culturalchallenge.MainActivity;
 import com.kpfu.itis.culturalchallenge.R;
@@ -17,6 +19,7 @@ import com.kpfu.itis.culturalchallenge.adapters.TasksRecyclerAdapter;
 import com.kpfu.itis.culturalchallenge.entities.Task;
 import com.kpfu.itis.culturalchallenge.providers.SharedPreferencesProvider;
 import com.kpfu.itis.culturalchallenge.service.ApiService;
+import com.kpfu.itis.culturalchallenge.util.ConfirmTask;
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKSdk;
 import com.vk.sdk.VKUIHelper;
@@ -33,6 +36,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Rage on 14.07.2017.
@@ -47,7 +53,9 @@ public class HomeFragment extends Fragment {
     @BindView(R.id.tasks_recycler_view)
     RecyclerView tasksRecyclerView;
 
+    private ProgressDialog mProgressDialog;
     private ApiService apiService;
+    private ConfirmTask mConfirmTask;
     private VKAccessToken access_token;
     private TasksRecyclerAdapter taskAdapter;
 
@@ -66,6 +74,7 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
 
+        mConfirmTask=new ConfirmTask(getContext());
         access_token = VKAccessToken.tokenFromSharedPreferences(getContext(), VKAccessToken.ACCESS_TOKEN);
         if (!VKSdk.isLoggedIn()) {
             Intent intent = new Intent(getActivity(), AuthentificationActivity.class);
@@ -94,7 +103,22 @@ public class HomeFragment extends Fragment {
             taskAdapter.setTaskListener(task -> {
                 TaskDetailFragment fragment = new TaskDetailFragment().newInstance(task);
                 fragment.setTaskListener(task1 -> {
+                    try {
+                        mProgressDialog=ProgressDialog.show(getContext(),getContext().getString(R.string.confirm_address)
+                                ,getContext().getString(R.string.loading),true,false);
+                        mConfirmTask.confirm(task1.getAddress()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                                .subscribe(confirm->{
+                                    if(confirm){
 
+                                    }else{
+                                        
+                                    }
+                                },throwable -> {},()->mProgressDialog.dismiss());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        if(mProgressDialog!=null)mProgressDialog.dismiss();
+                        Toast.makeText(getContext(),getContext().getString(R.string.enable_gps),Toast.LENGTH_SHORT).show();
+                    }
                 });
                 fragment.setTaskListenerDone(task1 -> {
                     getActivity().getSupportFragmentManager().beginTransaction().remove(fragment).commit();

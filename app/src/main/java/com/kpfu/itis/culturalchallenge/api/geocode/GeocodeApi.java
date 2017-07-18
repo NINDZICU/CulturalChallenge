@@ -35,12 +35,16 @@ public class GeocodeApi {
         return geocodeResponseObservable.flatMap(
                 geocodeResponse -> Observable.<Location>create(e -> {
                     if(geocodeResponse.getStatus().equals("OK")){
-                        for(Result result:geocodeResponse.getResults()){
-                            e.onNext(result.getGeometry().getLocation());
+                        if(geocodeResponse.getResults().isEmpty()){
+                            e.onNext(null);
+                        }else {
+                            for (Result result : geocodeResponse.getResults()) {
+                                e.onNext(result.getGeometry().getLocation());
+                            }
                         }
                         e.onComplete();
                     }else{
-                        e.onError(new Exception("Incorrect or bad request? result is "+geocodeResponse.getStatus()));
+                        e.onNext(null);
                     }
                 })
         );

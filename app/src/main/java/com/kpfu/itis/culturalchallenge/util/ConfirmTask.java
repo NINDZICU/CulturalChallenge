@@ -36,9 +36,31 @@ public class ConfirmTask {
                 .build();
     }
 
-    public Observable<Boolean> confirm(String taskAddress) throws Exception {
+    public Observable<Boolean> exists(String taskAddress){
+        return mGeocodeApi.getCoordinatesByAddress(taskAddress).flatMap(location -> Observable.<Boolean>create(e -> {
+            try {
+                if (location == null) {
+                    e.onNext(false);
+                } else {
+                    e.onNext(true);
+                }
+            }catch (Throwable throwable){
+                e.onError(throwable);
+            }finally {
+                e.onComplete();
+            }
+        }));
+    }
+
+    private boolean checkGps(){
         LocationManager locationManager=(LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-        if(!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);/*{
+            throw new Exception("GPS is not enabled!");
+        }*/
+    }
+
+    public Observable<Boolean> confirm(String taskAddress) throws Exception {
+        if(!checkGps()){
             throw new Exception("GPS is not enabled!");
         }
         return mGeocodeApi.getCoordinatesByAddress(taskAddress).flatMap(location -> Observable.<Boolean>create(e -> {

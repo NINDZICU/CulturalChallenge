@@ -10,6 +10,11 @@
     <string name="check_in">Зарегистрироваться</string>
     <string name="Folkner">"Всегда мечтайте и стремитесь к большему, чем вы знаете, что можете достигнуть. Не трудитесь быть лучше своих предшественников или современников. Старайтесь быть лучше самих себя"
     </string>
+    <string name="confirm_address">Подтверждение</string>
+    <string name="check_address">Проверка адреса</string>
+    <string name="address_not_exist">Адрес не существует</string>
+    <string name="enable_gps">Включите GPS</string>
+    <string name="loading">Пожалуйста подождите</string>
     <string name="author_Folkner">Уильям Фолкнер</string>
 
     <string name="form">Введите город проживания</string>
