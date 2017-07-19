@@ -89,6 +89,9 @@ public class ConfirmTask {
                                         e.onNext(false);
                                         e.onComplete();
                                     }
+                                    if(mGoogleApiClient.isConnected()){
+                                        mGoogleApiClient.disconnect();
+                                    }
                                 }, Looper.getMainLooper());
                     } else {
                         e.onError(new Exception("GoogleApiService connect failed!"));
@@ -97,9 +100,7 @@ public class ConfirmTask {
                     e.onError(new Exception("Location permission denied!"));
                 }
             }finally {
-                if(mGoogleApiClient.isConnected()){
-                    mGoogleApiClient.disconnect();
-                }
+
             }
         })).take(1);
     }

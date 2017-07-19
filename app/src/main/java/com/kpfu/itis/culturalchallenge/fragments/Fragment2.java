@@ -66,9 +66,10 @@ public class Fragment2 extends Fragment {
         taskAdapter.setTaskListener(task -> {
             TaskDetailFragment fragment = new TaskDetailFragment().newInstance(task);
             fragment.setTaskListener(task1 -> {
-                apiService.acceptTask(SharedPreferencesProvider.getInstance(getContext()).getVkId(), task1.getId());
-                notifyDataSetChanged();
-                if(mUpdateData!=null) mUpdateData.updateData();
+                apiService.acceptTask(SharedPreferencesProvider.getInstance(getContext()).getVkId(), task1.getId(),"kazan",taskAdapter,()->{
+                    notifyDataSetChanged();
+                    if(mUpdateData!=null) mUpdateData.updateData();
+                });
                 getActivity().getSupportFragmentManager().beginTransaction().remove(fragment).commit();
             });
             fragment.setTaskListenerDone(task1 -> {
@@ -78,7 +79,6 @@ public class Fragment2 extends Fragment {
             getChildFragmentManager().beginTransaction()
                     .add(R.id.all_task_detail_frame, fragment, TaskDetailFragment.class.getName()).commit();
         });
-        List<Task> mTasks = apiService.getAllTasksAndr("kazan", SharedPreferencesProvider.getInstance(getContext()).getVkId(), taskAdapter);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         tasksRecyclerView.setAdapter(taskAdapter);
 

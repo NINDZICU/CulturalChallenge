@@ -28,6 +28,10 @@ public class ApiService {
         this.context = context;
     }
 
+    public interface UpdateResult{
+        void onUpdate();
+    }
+
     public List<Task> getMyTasks(String login, TasksRecyclerAdapter adapter) {
         List<Task> mTasks = new ArrayList<>();
         artApi.getMyTasks(login).subscribeOn(Schedulers.io())
@@ -58,7 +62,7 @@ public class ApiService {
                     adapter.setTasks(tasks);
                 }, throwable -> {
                     Toast.makeText(context, "Throw ALLTasks" + throwable.getMessage(), Toast.LENGTH_LONG).show();
-                    System.out.println("getAllTasks "+throwable.getMessage());
+                    System.out.println("getAllTasks " + throwable.getMessage());
 
                 });
         return mTasks;
@@ -72,27 +76,35 @@ public class ApiService {
                     adapter.setTasks(tasks);
                 }, throwable -> {
                     Toast.makeText(context, "Throw ALLTasks" + throwable.getMessage(), Toast.LENGTH_LONG).show();
-                    System.out.println("getAllTasks "+throwable.getMessage());
+                    System.out.println("getAllTasks " + throwable.getMessage());
 
                 });
         return mTasks;
     }
 
-    public void addTask(String address, String login,  String dateFinish, String name, String description,
-                        String difficulty, String city){
-        artApi.addTask(address, login,  dateFinish, name, description, difficulty, city).subscribeOn(Schedulers.io())
+    public void addTask(String address, String login, String dateFinish, String name, String description,
+                        String difficulty, String city) {
+        artApi.addTask(address, login, dateFinish, name, description, difficulty, city).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(code -> {
                 }, throwable ->
                         Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
-    public void acceptTask(String login, Integer idTask) {
-        artApi.acceptTask(login, idTask).subscribeOn(Schedulers.io())
+    public void acceptTask(String login, Integer idTask, String city, TasksRecyclerAdapter adapter,UpdateResult updateResult) {
+        artApi.acceptTask(login, idTask).flatMap((code) -> artApi.getAllTasksAndr(city, login))
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(code -> {
-                }, throwable ->
-                        Toast.makeText(context, "Throw " + throwable.getMessage(), Toast.LENGTH_SHORT).show());
+                .subscribe(tasks -> {
+                    adapter.setTasks(tasks);
+                    if(updateResult!=null){
+                        updateResult.onUpdate();
+                    }
+                }, throwable -> {
+                    Toast.makeText(context, "Throw ALLTasks" + throwable.getMessage(), Toast.LENGTH_LONG).show();
+                    System.out.println("getAllTasks " + throwable.getMessage());
+
+                });
     }
 
     public void successTask(String login, Integer idTask) {
